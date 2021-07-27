@@ -24,6 +24,8 @@
 		2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB9F30D26AF5FA900F43852 /* story-4-path.swift */; };
 		2BB9F31026AF5FB300F43852 /* s4-text.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2BB9F30F26AF5FB300F43852 /* s4-text.txt */; };
 		2BB9F31226AF5FBE00F43852 /* s4-title.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2BB9F31126AF5FBE00F43852 /* s4-title.txt */; };
+		E741A24D26B0C70000A00A24 /* RSItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A24C26B0C70000A00A24 /* RSItemsVC.swift */; };
+		E741A24F26B0C78300A00A24 /* RSSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A24E26B0C78300A00A24 /* RSSettingsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		2BB9F30D26AF5FA900F43852 /* story-4-path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "story-4-path.swift"; sourceTree = "<group>"; };
 		2BB9F30F26AF5FB300F43852 /* s4-text.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s4-text.txt"; sourceTree = "<group>"; };
 		2BB9F31126AF5FBE00F43852 /* s4-title.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s4-title.txt"; sourceTree = "<group>"; };
+		E741A24C26B0C70000A00A24 /* RSItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSItemsVC.swift; sourceTree = "<group>"; };
+		E741A24E26B0C78300A00A24 /* RSSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSettingsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 		2BB9E75A26AB605700112651 /* RSSchool_T9 */ = {
 			isa = PBXGroup;
 			children = (
+				E741A25126B0C7AF00A00A24 /* Items */,
+				E741A25026B0C78D00A00A24 /* Settings */,
 				2BB9F28F26ADFAEB00F43852 /* Data */,
 				2BB9E75B26AB605700112651 /* AppDelegate.swift */,
 				2BB9E75D26AB605700112651 /* SceneDelegate.swift */,
@@ -146,6 +152,22 @@
 				2BB9F31126AF5FBE00F43852 /* s4-title.txt */,
 			);
 			path = "story-4";
+			sourceTree = "<group>";
+		};
+		E741A25026B0C78D00A00A24 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E741A24E26B0C78300A00A24 /* RSSettingsVC.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		E741A25126B0C7AF00A00A24 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				E741A24C26B0C70000A00A24 /* RSItemsVC.swift */,
+			);
+			path = Items;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,8 +252,10 @@
 			files = (
 				2BB9F30126AF557E00F43852 /* story-2-path.swift in Sources */,
 				2BB9E75C26AB605700112651 /* AppDelegate.swift in Sources */,
+				E741A24D26B0C70000A00A24 /* RSItemsVC.swift in Sources */,
 				2BB9F30B26AF5EEC00F43852 /* story-3-path.swift in Sources */,
 				2BB9F29126ADFAF100F43852 /* Data.swift in Sources */,
+				E741A24F26B0C78300A00A24 /* RSSettingsVC.swift in Sources */,
 				2BB9F2EC26AF1F6200F43852 /* story-1-path.swift in Sources */,
 				2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */,
 				2BB9E75E26AB605700112651 /* SceneDelegate.swift in Sources */,

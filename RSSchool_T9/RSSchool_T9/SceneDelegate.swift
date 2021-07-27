@@ -14,9 +14,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = scene as? UIWindowScene else {
+        guard let sceneRS = scene as? UIWindowScene else {
             fatalError("LOL, be careful, drink some water")
         }
+        self.window = UIWindow(windowScene: sceneRS)
+        self.window?.makeKeyAndVisible()
+        let itemsVC = RSItemsVC()
+        let settingsVC = RSSettingsVC()
+        let tabBarVC = UITabBarController()
+        tabBarVC.viewControllers = [itemsVC, settingsVC]
+        self.window?.rootViewController = tabBarVC
     }
 }
 
