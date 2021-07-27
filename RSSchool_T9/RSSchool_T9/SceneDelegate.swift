@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("LOL, be careful, drink some water")
         }
         self.window = UIWindow(windowScene: sceneRS)
+        self.window?.overrideUserInterfaceStyle = .light
         self.window?.makeKeyAndVisible()
         let itemsVC = RSItemsVC()
         let settingsVC = RSSettingsVC()
