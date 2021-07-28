@@ -19,6 +19,8 @@ class RSTabBarVC: UITabBarController {
         self.tabBar.barTintColor = UIColor.white
         self.tabBar.unselectedItemTintColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
         self.tabBar.tintColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+        itemsVC.view.layer.backgroundColor = UIColor.white.cgColor
+        settingsVC.view.layer.backgroundColor = UIColor.white.cgColor
         let image0 = UIImage(systemName: "square.grid.2x2", withConfiguration: UIImage.SymbolConfiguration(font: UIFont(name: "SFProDisplay-Medium", size: 16)!))
         let image1 = UIImage(systemName: "gear", withConfiguration: UIImage.SymbolConfiguration(font: UIFont(name: "SFProDisplay-Regular", size: 16)!))
         let item0 = UITabBarItem(title: "Items", image: image0, tag: 0)

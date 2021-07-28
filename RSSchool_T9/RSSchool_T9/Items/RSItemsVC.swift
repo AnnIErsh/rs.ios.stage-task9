@@ -23,12 +23,13 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        itemCV.layer.backgroundColor = UIColor.white.cgColor
         itemCV.showsVerticalScrollIndicator = false
         itemCV.dataSource = self
         itemCV.delegate = self
         itemCV.register(RSItemsCell.self, forCellWithReuseIdentifier: "RSItemsCell")
         view.addSubview(itemCV)
-        //itemCV.translatesAutoresizingMaskIntoConstraints = false
+        itemCV.translatesAutoresizingMaskIntoConstraints = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
