@@ -26,6 +26,9 @@
 		2BB9F31226AF5FBE00F43852 /* s4-title.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2BB9F31126AF5FBE00F43852 /* s4-title.txt */; };
 		E741A24D26B0C70000A00A24 /* RSItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A24C26B0C70000A00A24 /* RSItemsVC.swift */; };
 		E741A24F26B0C78300A00A24 /* RSSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A24E26B0C78300A00A24 /* RSSettingsVC.swift */; };
+		E741A25326B0E0E600A00A24 /* RSTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A25226B0E0E600A00A24 /* RSTabBarVC.swift */; };
+		E741A25726B18B0400A00A24 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */; };
+		E741A25826B18B0400A00A24 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E741A25626B18B0400A00A24 /* SFProDisplay-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		2BB9F31126AF5FBE00F43852 /* s4-title.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s4-title.txt"; sourceTree = "<group>"; };
 		E741A24C26B0C70000A00A24 /* RSItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSItemsVC.swift; sourceTree = "<group>"; };
 		E741A24E26B0C78300A00A24 /* RSSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSettingsVC.swift; sourceTree = "<group>"; };
+		E741A25226B0E0E600A00A24 /* RSTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTabBarVC.swift; sourceTree = "<group>"; };
+		E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
+		E741A25626B18B0400A00A24 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,10 +88,12 @@
 		2BB9E75A26AB605700112651 /* RSSchool_T9 */ = {
 			isa = PBXGroup;
 			children = (
+				E741A25426B188DD00A00A24 /* Fonts */,
 				E741A25126B0C7AF00A00A24 /* Items */,
 				E741A25026B0C78D00A00A24 /* Settings */,
 				2BB9F28F26ADFAEB00F43852 /* Data */,
 				2BB9E75B26AB605700112651 /* AppDelegate.swift */,
+				E741A25226B0E0E600A00A24 /* RSTabBarVC.swift */,
 				2BB9E75D26AB605700112651 /* SceneDelegate.swift */,
 				2BB9E76426AB605900112651 /* Assets.xcassets */,
 				2BB9E76626AB605900112651 /* LaunchScreen.storyboard */,
@@ -170,6 +178,15 @@
 			path = Items;
 			sourceTree = "<group>";
 		};
+		E741A25426B188DD00A00A24 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */,
+				E741A25626B18B0400A00A24 /* SFProDisplay-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -233,11 +250,13 @@
 				2BB9E76826AB605900112651 /* LaunchScreen.storyboard in Resources */,
 				2BB9F30726AF5D9D00F43852 /* s3-text.txt in Resources */,
 				2BB9F30926AF5DAF00F43852 /* s3-title.txt in Resources */,
+				E741A25826B18B0400A00A24 /* SFProDisplay-Regular.ttf in Resources */,
 				2BB9F31226AF5FBE00F43852 /* s4-title.txt in Resources */,
 				2BB9F29526AE01A300F43852 /* s1-title.txt in Resources */,
 				2BB9F31026AF5FB300F43852 /* s4-text.txt in Resources */,
 				2BB9F2FE26AF556600F43852 /* s2-title.txt in Resources */,
 				2BB9E76526AB605900112651 /* Assets.xcassets in Resources */,
+				E741A25726B18B0400A00A24 /* SFProDisplay-Medium.ttf in Resources */,
 				2BB9F30226AF57B500F43852 /* s2-text.txt in Resources */,
 				2BB9F29726AE01B800F43852 /* s1-text.txt in Resources */,
 			);
@@ -257,6 +276,7 @@
 				2BB9F29126ADFAF100F43852 /* Data.swift in Sources */,
 				E741A24F26B0C78300A00A24 /* RSSettingsVC.swift in Sources */,
 				2BB9F2EC26AF1F6200F43852 /* story-1-path.swift in Sources */,
+				E741A25326B0E0E600A00A24 /* RSTabBarVC.swift in Sources */,
 				2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */,
 				2BB9E75E26AB605700112651 /* SceneDelegate.swift in Sources */,
 			);

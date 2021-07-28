@@ -20,11 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: sceneRS)
         self.window?.overrideUserInterfaceStyle = .light
         self.window?.makeKeyAndVisible()
-        let itemsVC = RSItemsVC()
-        let settingsVC = RSSettingsVC()
-        let tabBarVC = UITabBarController()
-        tabBarVC.viewControllers = [itemsVC, settingsVC]
+        let tabBarVC = RSTabBarVC()
         self.window?.rootViewController = tabBarVC
+        self.window?.windowScene = sceneRS
     }
 }
 

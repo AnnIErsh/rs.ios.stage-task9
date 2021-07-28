@@ -13,8 +13,6 @@ class RSItemsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.layer.backgroundColor = UIColor.blue.cgColor
-        
         // Do any additional setup after loading the view.
     }
     
