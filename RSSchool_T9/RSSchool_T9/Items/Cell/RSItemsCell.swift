@@ -13,6 +13,7 @@ class RSItemsCell: UICollectionViewCell {
     
     var contentImage: UIImageView?
     var contentText: UILabel?
+    var contentTitle: UILabel?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,6 +34,15 @@ class RSItemsCell: UICollectionViewCell {
         contentImage!.layer.borderWidth = 1
         contentImage!.layer.cornerRadius = 10
         contentImage!.layer.borderColor = UIColor.black.cgColor
+        contentImage!.contentMode = .scaleAspectFill
+        contentImage?.clipsToBounds = true
         self.contentView.addSubview(contentImage!)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        contentImage?.removeFromSuperview()
+        contentImage = nil
+    }
 }
+

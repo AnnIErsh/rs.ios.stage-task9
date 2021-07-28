@@ -20,6 +20,7 @@ class RSItemsLayout: UICollectionViewFlowLayout {
         self.sectionInset.left = 20
         self.sectionInset.right = 20
         self.sectionInset.top = 40
+        self.sectionInset.bottom = 50
     }
     
     required init?(coder: NSCoder) {
