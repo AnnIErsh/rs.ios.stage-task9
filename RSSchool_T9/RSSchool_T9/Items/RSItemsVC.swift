@@ -9,22 +9,36 @@
 
 import UIKit
 
-class RSItemsVC: UIViewController {
+class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    var itemCV: UICollectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: RSItemsLayout())
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = itemCV.dequeueReusableCell(withReuseIdentifier: "RSItemsCell", for: indexPath)
+        return cell
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        itemCV.showsVerticalScrollIndicator = false
+        itemCV.dataSource = self
+        itemCV.delegate = self
+        itemCV.register(RSItemsCell.self, forCellWithReuseIdentifier: "RSItemsCell")
+        view.addSubview(itemCV)
+        //itemCV.translatesAutoresizingMaskIntoConstraints = false
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        itemCV.setNeedsLayout()
     }
-    */
-
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        itemCV.frame = UIScreen.main.bounds
+        itemCV.center = view.center
+    }
 }
