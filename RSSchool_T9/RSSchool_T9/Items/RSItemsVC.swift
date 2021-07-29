@@ -79,6 +79,8 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         if (str == "Story")
         {
             let storyVC = RSStoryVC()
+            storyVC.contentImage = img.image
+            storyVC.contentTitle = img.subviews[0] as? UILabel
             storyVC.modalPresentationStyle = .overFullScreen
             present(storyVC, animated: true, completion: nil)
         }
