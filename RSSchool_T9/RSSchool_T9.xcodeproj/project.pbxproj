@@ -25,6 +25,7 @@
 		2BB9F31026AF5FB300F43852 /* s4-text.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2BB9F30F26AF5FB300F43852 /* s4-text.txt */; };
 		2BB9F31226AF5FBE00F43852 /* s4-title.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2BB9F31126AF5FBE00F43852 /* s4-title.txt */; };
 		E728F3F826B1A81200938B2C /* RSItemsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E728F3F726B1A81200938B2C /* RSItemsLayout.swift */; };
+		E728F3FA26B223C600938B2C /* Rockwell-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E728F3F926B223C600938B2C /* Rockwell-Regular.ttf */; };
 		E741A24D26B0C70000A00A24 /* RSItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A24C26B0C70000A00A24 /* RSItemsVC.swift */; };
 		E741A24F26B0C78300A00A24 /* RSSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A24E26B0C78300A00A24 /* RSSettingsVC.swift */; };
 		E741A25326B0E0E600A00A24 /* RSTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A25226B0E0E600A00A24 /* RSTabBarVC.swift */; };
@@ -54,6 +55,7 @@
 		2BB9F30F26AF5FB300F43852 /* s4-text.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s4-text.txt"; sourceTree = "<group>"; };
 		2BB9F31126AF5FBE00F43852 /* s4-title.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s4-title.txt"; sourceTree = "<group>"; };
 		E728F3F726B1A81200938B2C /* RSItemsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSItemsLayout.swift; sourceTree = "<group>"; };
+		E728F3F926B223C600938B2C /* Rockwell-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rockwell-Regular.ttf"; sourceTree = "<group>"; };
 		E741A24C26B0C70000A00A24 /* RSItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSItemsVC.swift; sourceTree = "<group>"; };
 		E741A24E26B0C78300A00A24 /* RSSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSettingsVC.swift; sourceTree = "<group>"; };
 		E741A25226B0E0E600A00A24 /* RSTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTabBarVC.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */,
 				E741A25626B18B0400A00A24 /* SFProDisplay-Regular.ttf */,
+				E728F3F926B223C600938B2C /* Rockwell-Regular.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			files = (
 				2BB9E76826AB605900112651 /* LaunchScreen.storyboard in Resources */,
 				2BB9F30726AF5D9D00F43852 /* s3-text.txt in Resources */,
+				E728F3FA26B223C600938B2C /* Rockwell-Regular.ttf in Resources */,
 				2BB9F30926AF5DAF00F43852 /* s3-title.txt in Resources */,
 				E741A25826B18B0400A00A24 /* SFProDisplay-Regular.ttf in Resources */,
 				2BB9F31226AF5FBE00F43852 /* s4-title.txt in Resources */,

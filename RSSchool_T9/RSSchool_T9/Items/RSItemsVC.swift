@@ -18,7 +18,9 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = itemCV.dequeueReusableCell(withReuseIdentifier: "RSItemsCell", for: indexPath)
-        let img:UIImageView = cell.contentView.subviews[0] as! UIImageView
+        let img: UIImageView = cell.contentView.subviews[0] as! UIImageView
+        let title: UILabel = img.subviews[0] as! UILabel
+        let text: UILabel = img.subviews[1] as! UILabel
         let data = FillingData.data[indexPath.row]
         func getData() -> Any {
             switch data {
@@ -33,11 +35,15 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         {
             let story = res as! Story
             img.image = story.coverImage
+            title.text = story.title
+            text.text = "Story"
         }
         if res is Gallery
         {
             let gallery = res as! Gallery
             img.image = gallery.coverImage
+            title.text = gallery.title
+            text.text = "Gallery"
         }
         return cell
     }
