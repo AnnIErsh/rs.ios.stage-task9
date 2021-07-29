@@ -10,9 +10,20 @@
 import UIKit
 
 class RSItemsLayout: UICollectionViewFlowLayout {
+    var dw: CGFloat {
+        if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
+        {
+            return UIScreen.main.bounds.height
+        }
+        else
+        {
+            return UIScreen.main.bounds.width
+        }
+    }
+    
     override init() {
         super.init()
-        let w = (UIScreen.main.bounds.width - 56) / 2;
+        let w = (dw - 56) / 2;
         let h = (w * 220) / 179
         self.itemSize = CGSize(width: w, height: h)
         self.scrollDirection = .vertical

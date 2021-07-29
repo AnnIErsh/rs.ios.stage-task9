@@ -52,8 +52,9 @@ class RSItemsCell: UICollectionViewCell {
     
     func makeTitle() {
         contentTitle = UILabel()
-        let font = UIFont(name: "Rockwell-Regular", size: 16)
-        let w = contentImage!.bounds.width
+        let size = 16 * (contentImage!.frame.height / 200)
+        let font = UIFont(name: "Rockwell-Regular", size: size)
+        let w = contentImage!.bounds.width - size
         let y: CGFloat = (contentImage!.frame.height * 151) / 200
         contentTitle!.frame = CGRect(x: 10, y: y, width: w, height: 19)
         contentTitle!.font = font
@@ -64,9 +65,11 @@ class RSItemsCell: UICollectionViewCell {
     
     func makeText() {
         contentText = UILabel()
-        let font = UIFont(name: "Rockwell-Regular", size: 12)
+        let size = 12 * (contentImage!.frame.height / 200)
+        let font = UIFont(name: "Rockwell-Regular", size: size)
+        let dy = 3 * (size / 16)
         let w = contentTitle!.frame.width
-        let y: CGFloat = contentTitle!.frame.origin.y + contentTitle!.frame.height + 3
+        let y: CGFloat = contentTitle!.frame.origin.y + contentTitle!.frame.height + dy
         contentText!.frame = CGRect(x: 10, y: y, width: w, height: 14)
         contentText!.font = font
         contentText!.textColor = UIColor(red: 0.712, green: 0.712, blue: 0.712, alpha: 1)
