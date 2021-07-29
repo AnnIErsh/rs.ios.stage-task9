@@ -69,4 +69,19 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         itemCV.frame = UIScreen.main.bounds
         itemCV.center = view.center
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        let cell = collectionView.cellForItem(at: indexPath)
+        let img = cell?.contentView.subviews[0] as! UIImageView
+        let text = img.subviews[1] as! UILabel
+        let str = text.text
+        if (str == "Story")
+        {
+            let storyVC = RSStoryVC()
+            storyVC.modalPresentationStyle = .overFullScreen
+            present(storyVC, animated: true, completion: nil)
+        }
+        
+    }
 }

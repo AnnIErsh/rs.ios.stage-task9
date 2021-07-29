@@ -32,6 +32,7 @@
 		E741A25726B18B0400A00A24 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */; };
 		E741A25826B18B0400A00A24 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E741A25626B18B0400A00A24 /* SFProDisplay-Regular.ttf */; };
 		E741A25A26B1999300A00A24 /* RSItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A25926B1999300A00A24 /* RSItemsCell.swift */; };
+		E7EF820C26B2FAC500A6B453 /* RSStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EF820B26B2FAC500A6B453 /* RSStoryVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		E741A25626B18B0400A00A24 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		E741A25926B1999300A00A24 /* RSItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSItemsCell.swift; sourceTree = "<group>"; };
+		E7EF820B26B2FAC500A6B453 /* RSStoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSStoryVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,8 @@
 		E741A25126B0C7AF00A00A24 /* Items */ = {
 			isa = PBXGroup;
 			children = (
+				E7EF820D26B2FF5E00A6B453 /* Gallery */,
+				E7EF820926B2FA9400A6B453 /* Story */,
 				E728F3F626B1A77600938B2C /* Layout */,
 				E728F3F526B1A76800938B2C /* Cell */,
 				E741A24C26B0C70000A00A24 /* RSItemsVC.swift */,
@@ -210,6 +214,21 @@
 				E728F3F926B223C600938B2C /* Rockwell-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		E7EF820926B2FA9400A6B453 /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				E7EF820B26B2FAC500A6B453 /* RSStoryVC.swift */,
+			);
+			path = Story;
+			sourceTree = "<group>";
+		};
+		E7EF820D26B2FF5E00A6B453 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Gallery;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +326,7 @@
 				E741A25326B0E0E600A00A24 /* RSTabBarVC.swift in Sources */,
 				2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */,
 				2BB9E75E26AB605700112651 /* SceneDelegate.swift in Sources */,
+				E7EF820C26B2FAC500A6B453 /* RSStoryVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
