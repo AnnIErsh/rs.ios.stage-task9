@@ -41,6 +41,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
     
     var scroll: UIScrollView!
     var container: UIView!
+    var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +82,6 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         close.tintColor = UIColor.white
         let image = UIImage(systemName: "multiply", withConfiguration: UIImage.SymbolConfiguration(font: UIFont(name: "SFProDisplay-Regular", size: 22)!))
         close.setImage(image, for: .normal)
-        close.setImage(image, for: .highlighted)
         container.addSubview(close)
         setConstraintsForClose()
     }
@@ -124,6 +124,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         container.addSubview(contentImageView!)
         makeTitle()
         setImageConstraints()
+        setLabelStoryWithConstraints()
     }
     
     func setImageConstraints() {
@@ -167,5 +168,33 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         contentTitle!.heightAnchor.constraint(equalToConstant: h).isActive = true
         contentTitle!.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: dx).isActive = true
         contentTitle!.topAnchor.constraint(equalTo: margins.topAnchor, constant: y).isActive = true
+    }
+    
+    func setLabelStoryWithConstraints() {
+        let w = dw - 292
+        let h = (w * 40) / 122
+        label = UILabel(frame: CGRect(x: 0, y: 0, width: w, height: h))
+        label.layer.borderWidth = 1
+        label.layer.cornerRadius = 8
+        label.layer.borderColor = UIColor.white.cgColor
+        label.layer.backgroundColor = UIColor.black.cgColor
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.3
+        label.attributedText = NSMutableAttributedString(string: "Story", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.baselineAdjustment = .alignCenters
+        let size = 24 * (contentImageView!.frame.height / 500)
+        let font = UIFont(name: "Rockwell-Regular", size: size)
+        label.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
+        label.font = font
+        container.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        let margins = contentImageView!.layoutMarginsGuide
+        let hc = size + 11
+        label.widthAnchor.constraint(equalToConstant: w).isActive = true
+        label.heightAnchor.constraint(equalToConstant: hc).isActive = true
+        label.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: hc / 1.5).isActive = true
     }
 }
