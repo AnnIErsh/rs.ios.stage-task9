@@ -80,7 +80,8 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         {
             let storyVC = RSStoryVC()
             storyVC.contentImage = img.image
-            storyVC.contentTitle = img.subviews[0] as? UILabel
+            let title = img.subviews[0] as? UILabel
+            storyVC.contentTitleText = title?.text
             storyVC.modalPresentationStyle = .overFullScreen
             present(storyVC, animated: true, completion: nil)
         }
