@@ -11,6 +11,7 @@ import UIKit
 
 class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var itemCV: UICollectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: RSItemsLayout())
+    var textForStory: Array<(String, Int)> = []
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 8
@@ -37,6 +38,7 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             img.image = story.coverImage
             title.text = story.title
             text.text = "Story"
+            textForStory.append((story.text, indexPath.row))
         }
         if res is Gallery
         {
@@ -44,6 +46,7 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             img.image = gallery.coverImage
             title.text = gallery.title
             text.text = "Gallery"
+            textForStory.append(("", indexPath.row))
         }
         return cell
     }
@@ -82,9 +85,9 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             storyVC.contentImage = img.image
             let title = img.subviews[0] as? UILabel
             storyVC.contentTitleText = title?.text
+            storyVC.contentText = textForStory[indexPath.row].0
             storyVC.modalPresentationStyle = .overFullScreen
             present(storyVC, animated: true, completion: nil)
         }
-        
     }
 }

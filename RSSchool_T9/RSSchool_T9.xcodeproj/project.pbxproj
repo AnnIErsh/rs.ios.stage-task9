@@ -32,6 +32,8 @@
 		E741A25726B18B0400A00A24 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */; };
 		E741A25826B18B0400A00A24 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E741A25626B18B0400A00A24 /* SFProDisplay-Regular.ttf */; };
 		E741A25A26B1999300A00A24 /* RSItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A25926B1999300A00A24 /* RSItemsCell.swift */; };
+		E7ADE66726B4641E00481493 /* RSCustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7ADE66626B4641E00481493 /* RSCustomLabel.swift */; };
+		E7ADE66A26B4649600481493 /* DelegateSizeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7ADE66926B4649600481493 /* DelegateSizeProtocol.swift */; };
 		E7EF820C26B2FAC500A6B453 /* RSStoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EF820B26B2FAC500A6B453 /* RSStoryVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		E741A25626B18B0400A00A24 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		E741A25926B1999300A00A24 /* RSItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSItemsCell.swift; sourceTree = "<group>"; };
+		E7ADE66626B4641E00481493 /* RSCustomLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCustomLabel.swift; sourceTree = "<group>"; };
+		E7ADE66926B4649600481493 /* DelegateSizeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateSizeProtocol.swift; sourceTree = "<group>"; };
 		E7EF820B26B2FAC500A6B453 /* RSStoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSStoryVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +100,7 @@
 		2BB9E75A26AB605700112651 /* RSSchool_T9 */ = {
 			isa = PBXGroup;
 			children = (
+				E7ADE66826B4646300481493 /* Protocols */,
 				E741A25426B188DD00A00A24 /* Fonts */,
 				E741A25126B0C7AF00A00A24 /* Items */,
 				E741A25026B0C78D00A00A24 /* Settings */,
@@ -216,9 +221,26 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		E7ADE66826B4646300481493 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E7ADE66926B4649600481493 /* DelegateSizeProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E7ADE66B26B4651D00481493 /* helpful */ = {
+			isa = PBXGroup;
+			children = (
+				E7ADE66626B4641E00481493 /* RSCustomLabel.swift */,
+			);
+			path = helpful;
+			sourceTree = "<group>";
+		};
 		E7EF820926B2FA9400A6B453 /* Story */ = {
 			isa = PBXGroup;
 			children = (
+				E7ADE66B26B4651D00481493 /* helpful */,
 				E7EF820B26B2FAC500A6B453 /* RSStoryVC.swift */,
 			);
 			path = Story;
@@ -321,11 +343,13 @@
 				2BB9F30B26AF5EEC00F43852 /* story-3-path.swift in Sources */,
 				2BB9F29126ADFAF100F43852 /* Data.swift in Sources */,
 				E741A24F26B0C78300A00A24 /* RSSettingsVC.swift in Sources */,
+				E7ADE66A26B4649600481493 /* DelegateSizeProtocol.swift in Sources */,
 				2BB9F2EC26AF1F6200F43852 /* story-1-path.swift in Sources */,
 				E741A25A26B1999300A00A24 /* RSItemsCell.swift in Sources */,
 				E741A25326B0E0E600A00A24 /* RSTabBarVC.swift in Sources */,
 				2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */,
 				2BB9E75E26AB605700112651 /* SceneDelegate.swift in Sources */,
+				E7ADE66726B4641E00481493 /* RSCustomLabel.swift in Sources */,
 				E7EF820C26B2FAC500A6B453 /* RSStoryVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

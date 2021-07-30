@@ -13,10 +13,14 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
 
     var contentImageView: UIImageView?
     var contentImage: UIImage?
-    var contentText: UILabel?
+    var contentText: String?
+    var contentTextLabel: RSCustomLabel!
     var contentTitle: UILabel?
     var contentTitleText: String?
     var close: UIButton = UIButton(frame: CGRect(x: 10, y: 10, width: 44, height: 44))
+    var stroke: UIView!
+    var drawings: UIView!
+    
     var dw: CGFloat {
         if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
         {
@@ -49,12 +53,15 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         makeScroll()
         makeCloseButton()
         setImageContent()
+        setStrokeWithConstraints()
+        setDrawingsWithConstraints()
+        setTextForStoryWithConstraints()
     }
     
     func makeScroll() {
         scroll = UIScrollView(frame: CGRect(origin: view.bounds.origin, size: CGSize(width: dw, height: dh)))
         scroll.delegate = self
-        scroll.contentSize = CGSize(width: dw, height: 1000)
+        scroll.contentSize = CGSize(width: dw, height: 5000)
         scroll.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scroll)
         scroll.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
@@ -197,4 +204,64 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         label.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
         label.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: hc / 1.5).isActive = true
     }
+    
+    func setStrokeWithConstraints() {
+        let h: CGFloat = 1.00
+        stroke = UIView(frame: CGRect(x: 0, y: 0, width: 208, height: 1))
+        stroke.layer.borderWidth = 1
+        stroke.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
+        container.addSubview(stroke)
+        stroke.translatesAutoresizingMaskIntoConstraints = false
+        let margins = contentImageView!.layoutMarginsGuide
+        stroke.heightAnchor.constraint(equalToConstant: h).isActive = true
+        stroke.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
+        let aspectRatio: CGFloat = 9 / 16
+        let d = label.frame.height / 1.5
+        stroke.widthAnchor.constraint(equalTo: contentImageView!.widthAnchor,
+                                       multiplier: aspectRatio).isActive = true
+        stroke.topAnchor.constraint(equalTo: margins.bottomAnchor, constant: d).isActive = true
+    }
+    
+    func setDrawingsWithConstraints() {
+        drawings = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 300))
+        drawings.layer.backgroundColor = UIColor.black.cgColor
+        drawings.layer.cornerRadius = 20
+        drawings.layer.borderWidth = 1
+        drawings.layer.borderColor = UIColor.white.cgColor
+        container.addSubview(drawings)
+        drawings.translatesAutoresizingMaskIntoConstraints = false
+        let margins = contentImageView!.layoutMarginsGuide
+        let aspectRatio: CGFloat = 3 / 4.5
+        let aspectRatioH: CGFloat = 3 / 8
+        drawings.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
+        drawings.widthAnchor.constraint(equalTo: contentImageView!.heightAnchor,
+                                       multiplier: aspectRatio).isActive = true
+        drawings.heightAnchor.constraint(equalTo: contentImageView!.widthAnchor,
+                                       multiplier: aspectRatioH).isActive = true
+        drawings.topAnchor.constraint(equalTo: stroke.bottomAnchor, constant: 1).isActive = true
+    }
+    
+    func setTextForStoryWithConstraints() {
+        contentTextLabel = RSCustomLabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        contentTextLabel.numberOfLines = 0
+        contentTextLabel.sizeToFit()
+        contentTextLabel.textColor = UIColor.white
+        contentTextLabel.layer.borderWidth = 1
+        contentTextLabel.layer.borderColor = UIColor.white.cgColor
+        contentTextLabel.layer.cornerRadius = 8
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineHeightMultiple = 1.3
+        contentTextLabel.attributedText = NSMutableAttributedString(string: contentText!, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        let size = 24 * (contentImageView!.frame.height / 500)
+        contentTextLabel.font = UIFont(name: "Rockwell-Regular", size: size)
+        contentTextLabel.lineBreakMode = .byWordWrapping
+        //contentTextLabel.baselineAdjustment = .alignCenters
+        container.addSubview(contentTextLabel)
+        contentTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        let margins = contentImageView!.layoutMarginsGuide
+        contentTextLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
+        contentTextLabel.widthAnchor.constraint(equalToConstant: contentImageView!.frame.width).isActive = true
+        contentTextLabel.topAnchor.constraint(equalTo: drawings.bottomAnchor, constant: 1).isActive = true
+    }
 }
+
