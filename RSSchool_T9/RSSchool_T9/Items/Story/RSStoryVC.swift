@@ -255,7 +255,6 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         let size = 24 * (contentImageView!.frame.height / 500)
         contentTextLabel.font = UIFont(name: "Rockwell-Regular", size: size)
         contentTextLabel.lineBreakMode = .byWordWrapping
-        //contentTextLabel.baselineAdjustment = .alignCenters
         container.addSubview(contentTextLabel)
         contentTextLabel.translatesAutoresizingMaskIntoConstraints = false
         let margins = contentImageView!.layoutMarginsGuide

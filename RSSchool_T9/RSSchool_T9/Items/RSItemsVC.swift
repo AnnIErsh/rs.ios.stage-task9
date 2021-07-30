@@ -12,6 +12,26 @@ import UIKit
 class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var itemCV: UICollectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: RSItemsLayout())
     var textForStory: Array<(String, Int)> = []
+    var dwidth: CGFloat {
+        if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
+        {
+            return UIScreen.main.bounds.height
+        }
+        else
+        {
+            return UIScreen.main.bounds.width
+        }
+    }
+    var dheight: CGFloat {
+        if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
+        {
+            return UIScreen.main.bounds.width
+        }
+        else
+        {
+            return UIScreen.main.bounds.height
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 8
@@ -60,6 +80,10 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         itemCV.register(RSItemsCell.self, forCellWithReuseIdentifier: "RSItemsCell")
         view.addSubview(itemCV)
         itemCV.translatesAutoresizingMaskIntoConstraints = false
+        let margins = view.layoutMarginsGuide
+        itemCV.frameLayoutGuide.widthAnchor.constraint(equalToConstant: dwidth).isActive = true
+        itemCV.frameLayoutGuide.heightAnchor.constraint(equalToConstant: dheight).isActive = true
+        itemCV.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
