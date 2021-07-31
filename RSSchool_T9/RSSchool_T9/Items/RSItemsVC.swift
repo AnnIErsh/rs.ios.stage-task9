@@ -92,12 +92,19 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         itemCV.setNeedsLayout()
     }
     
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        //itemCV.frame = UIScreen.main.bounds
-//        itemCV.center = view.center
-//    }
-    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        let w = (dwidth - 56) / 2;
+        if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
+        {
+            itemCV.contentInset.bottom = 500 * (w / 179)
+        }
+        else
+        {
+            itemCV.contentInset.bottom = 100 * (w / 179)
+        }
+    }
+        
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         let cell = collectionView.cellForItem(at: indexPath)

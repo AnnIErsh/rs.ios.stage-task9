@@ -27,11 +27,10 @@ class RSItemsLayout: UICollectionViewFlowLayout {
         let h = (w * 220) / 179
         self.itemSize = CGSize(width: w, height: h)
         self.scrollDirection = .vertical
-        self.minimumLineSpacing = 16
-        self.sectionInset.left = 20
-        self.sectionInset.right = 20
-        self.sectionInset.top = 40
-        self.sectionInset.bottom = 50
+        self.minimumLineSpacing = 16 * (w / 179)
+        self.sectionInset.left = 20 * (w / 179)
+        self.sectionInset.right = 20 * (w / 179)
+        self.sectionInset.top = 40 * (w / 179)
     }
     
     required init?(coder: NSCoder) {

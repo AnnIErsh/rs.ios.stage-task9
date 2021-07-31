@@ -75,11 +75,5 @@ class RSItemsCell: UICollectionViewCell {
         contentText!.textColor = UIColor(red: 0.712, green: 0.712, blue: 0.712, alpha: 1)
         contentImage!.addSubview(contentText!)
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        contentImage?.removeFromSuperview()
-        contentImage = nil
-    }
 }
 
