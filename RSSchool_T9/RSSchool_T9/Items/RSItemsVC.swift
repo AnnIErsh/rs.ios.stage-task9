@@ -12,6 +12,7 @@ import UIKit
 class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var itemCV: UICollectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: RSItemsLayout())
     var textForStory: Array<(String, Int)> = []
+    var imagesForGallery: [[UIImage]] = []
     var dwidth: CGFloat {
         if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
         {
@@ -59,6 +60,7 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             title.text = story.title
             text.text = "Story"
             textForStory.append((story.text, indexPath.row))
+            imagesForGallery.append([UIImage()])
         }
         if res is Gallery
         {
@@ -66,7 +68,9 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             img.image = gallery.coverImage
             title.text = gallery.title
             text.text = "Gallery"
+            let images = gallery.images
             textForStory.append(("", indexPath.row))
+            imagesForGallery.append(images)
         }
         return cell
     }
@@ -121,5 +125,16 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             storyVC.modalPresentationStyle = .overFullScreen
             present(storyVC, animated: true, completion: nil)
         }
+        if (str == "Gallery")
+        {
+            let galleryVC = RSGalleryVC()
+            galleryVC.contentImage = img.image
+            let title = img.subviews[0] as? UILabel
+            galleryVC.contentTitleText = title?.text
+            galleryVC.images = imagesForGallery[indexPath.row]
+            galleryVC.modalPresentationStyle = .overFullScreen
+            present(galleryVC, animated: true, completion: nil)
+        }
+        
     }
 }

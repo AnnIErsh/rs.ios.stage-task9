@@ -3,24 +3,25 @@
 // Project: RSSchool_T9
 // 
 // Author: Anna Ershova
-// On: 29.07.2021
+// On: 31.07.2021
 // 
 // Copyright © 2021 RSSchool. All rights reserved.
 
 import UIKit
 
-class RSStoryVC: UIViewController, UIScrollViewDelegate {
-
-    var contentImageView: UIImageView?
+class RSGalleryVC: UIViewController, UIScrollViewDelegate {
+    
+    var scroll: UIScrollView!
+    var container: UIView!
+    var images: [UIImage]!
+    var close: UIButton = UIButton(frame: CGRect(x: 10, y: 10, width: 44, height: 44))
+    var mainImageView: UIImageView?
     var contentImage: UIImage?
-    var contentText: String?
-    var contentTextLabel: RSCustomLabel!
     var contentTitle: UILabel?
     var contentTitleText: String?
-    var close: UIButton = UIButton(frame: CGRect(x: 10, y: 10, width: 44, height: 44))
+    var label: UILabel!
+    var hc: CGFloat = 0
     var stroke: UIView!
-    var drawings: UIView!
-    
     var dw: (CGFloat, Int) {
         if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
         {
@@ -42,26 +43,25 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
             return (UIScreen.main.bounds.width, 1)
         }
     }
-    var hc: CGFloat = 0
-    var scroll: UIScrollView!
-    var container: UIView!
-    var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.layer.backgroundColor = UIColor.black.cgColor
         makeScroll()
-        setImageContent()
+        setImageContent(contentImageView: &mainImageView)
+        makeTitle()
+        setImageConstraints()
+        setLabelStoryWithConstraints()
         makeCloseButton()
         setStrokeWithConstraints()
-        setDrawingsWithConstraints()
-        setTextForStoryWithConstraints()
+        setPictureViews()
+        scroll.isScrollEnabled = true
     }
     
     func makeScroll() {
         scroll = UIScrollView(frame: CGRect(origin: view.bounds.origin, size: CGSize(width: dw.0, height: dh.0)))
         scroll.delegate = self
-        scroll.contentSize = CGSize(width: dw.0, height: 10)
+        scroll.contentSize = CGSize(width: dw.0, height: dh.0)
         scroll.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scroll)
         let margins = view.layoutMarginsGuide
@@ -96,7 +96,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         close.translatesAutoresizingMaskIntoConstraints = false
         let margins = container.layoutMarginsGuide
         close.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10).isActive = true
-        close.trailingAnchor.constraint(equalTo: contentImageView!.trailingAnchor, constant: 0).isActive = true
+        close.trailingAnchor.constraint(equalTo: mainImageView!.trailingAnchor, constant: 0).isActive = true
         let heightConstraint = NSLayoutConstraint(item: close, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: close.frame.size.height)
         let widthConstraint = NSLayoutConstraint(item: close, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: close.frame.size.width)
         heightConstraint.isActive = true
@@ -107,7 +107,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func setImageContent() {
+    func setImageContent(contentImageView: inout UIImageView?) {
         let w = dw.0 - 40
         let h = (w * 500) / 374
         contentImageView = UIImageView(frame: CGRect(x: 10, y: 10, width: w, height: h))
@@ -128,19 +128,16 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         layer0.position = contentImageView!.center
         contentImageView!.layer.addSublayer(layer0)
         container.addSubview(contentImageView!)
-        makeTitle()
-        setImageConstraints()
-        setLabelStoryWithConstraints()
     }
     
     func setImageConstraints() {
-        contentImageView!.translatesAutoresizingMaskIntoConstraints = false
+        mainImageView!.translatesAutoresizingMaskIntoConstraints = false
         let margins = container.layoutMarginsGuide
         hc = dw.0 * 80 / 374
-        contentImageView!.topAnchor.constraint(equalTo: margins.topAnchor, constant: hc).isActive = true
-        contentImageView!.centerXAnchor.constraint(equalTo: margins.centerXAnchor, constant: 0).isActive = true
-        let heightConstraint = NSLayoutConstraint(item: contentImageView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: contentImageView!.frame.size.height)
-        let widthConstraint = NSLayoutConstraint(item: contentImageView!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: contentImageView!.frame.size.width)
+        mainImageView!.topAnchor.constraint(equalTo: margins.topAnchor, constant: hc).isActive = true
+        mainImageView!.centerXAnchor.constraint(equalTo: margins.centerXAnchor, constant: 0).isActive = true
+        let heightConstraint = NSLayoutConstraint(item: mainImageView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: mainImageView!.frame.size.height)
+        let widthConstraint = NSLayoutConstraint(item: mainImageView!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: mainImageView!.frame.size.width)
         heightConstraint.isActive = true
         widthConstraint.isActive = true
     }
@@ -151,24 +148,24 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         contentTitle!.lineBreakMode = .byWordWrapping
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.01
-        paragraphStyle.lineSpacing = 12 * (contentImageView!.frame.height / 500)
+        paragraphStyle.lineSpacing = 12 * (mainImageView!.frame.height / 500)
         contentTitle!.attributedText = NSMutableAttributedString(string: contentTitleText!, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
-        let size = 48 * (contentImageView!.frame.height / 500)
+        let size = 48 * (mainImageView!.frame.height / 500)
         let font = UIFont(name: "Rockwell-Regular", size: size)
         contentTitle!.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
         contentTitle!.font = font
         contentTitle!.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        contentImageView!.addSubview(contentTitle!)
+        mainImageView!.addSubview(contentTitle!)
         setTitleConstraints()
     }
     
     func setTitleConstraints() {
-        let w = 314 * (contentImageView!.frame.width / 374)
-        let h = 116 * (contentImageView!.frame.height / 500)
-        let y = 329 * (contentImageView!.frame.height / 500)
-        let dx = 30 * (contentImageView!.frame.width / 374)
+        let w = 314 * (mainImageView!.frame.width / 374)
+        let h = 116 * (mainImageView!.frame.height / 500)
+        let y = 329 * (mainImageView!.frame.height / 500)
+        let dx = 30 * (mainImageView!.frame.width / 374)
         contentTitle!.translatesAutoresizingMaskIntoConstraints = false
-        let margins = contentImageView!.layoutMarginsGuide
+        let margins = mainImageView!.layoutMarginsGuide
         contentTitle!.translatesAutoresizingMaskIntoConstraints = false
         contentTitle!.widthAnchor.constraint(equalToConstant: w).isActive = true
         contentTitle!.heightAnchor.constraint(equalToConstant: h).isActive = true
@@ -190,17 +187,17 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         label.layer.backgroundColor = UIColor.black.cgColor
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.3
-        label.attributedText = NSMutableAttributedString(string: "Story", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
+        label.attributedText = NSMutableAttributedString(string: "Gallery", attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.baselineAdjustment = .alignCenters
-        let size = 24 * (contentImageView!.frame.height / 500)
+        let size = 24 * (mainImageView!.frame.height / 500)
         let font = UIFont(name: "Rockwell-Regular", size: size)
         label.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
         label.font = font
         container.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
-        let margins = contentImageView!.layoutMarginsGuide
+        let margins = mainImageView!.layoutMarginsGuide
         let hc = size + 11
         label.widthAnchor.constraint(equalToConstant: w).isActive = true
         label.heightAnchor.constraint(equalToConstant: hc).isActive = true
@@ -215,69 +212,76 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         stroke.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         container.addSubview(stroke)
         stroke.translatesAutoresizingMaskIntoConstraints = false
-        let margins = contentImageView!.layoutMarginsGuide
+        let margins = mainImageView!.layoutMarginsGuide
         stroke.heightAnchor.constraint(equalToConstant: h).isActive = true
         stroke.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
         let aspectRatio: CGFloat = 9 / 16
         let d = label.frame.height / 1.5
-        stroke.widthAnchor.constraint(equalTo: contentImageView!.widthAnchor,
+        stroke.widthAnchor.constraint(equalTo: mainImageView!.widthAnchor,
                                        multiplier: aspectRatio).isActive = true
         stroke.topAnchor.constraint(equalTo: margins.bottomAnchor, constant: d).isActive = true
     }
     
-    func setDrawingsWithConstraints() {
-        drawings = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 300))
-        drawings.layer.backgroundColor = UIColor.black.cgColor
-        drawings.layer.cornerRadius = 20
-        drawings.layer.borderWidth = 1
-        drawings.layer.borderColor = UIColor.white.cgColor
-        container.addSubview(drawings)
-        drawings.translatesAutoresizingMaskIntoConstraints = false
-        let margins = contentImageView!.layoutMarginsGuide
-        let aspectRatio: CGFloat = 3 / 4.5
-        let aspectRatioH: CGFloat = 3 / 8
-        drawings.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
-        drawings.widthAnchor.constraint(equalTo: contentImageView!.heightAnchor,
-                                       multiplier: aspectRatio).isActive = true
-        drawings.heightAnchor.constraint(equalTo: contentImageView!.widthAnchor,
-                                       multiplier: aspectRatioH).isActive = true
-        drawings.topAnchor.constraint(equalTo: stroke.bottomAnchor, constant: 1).isActive = true
+    func setPictureViews() {
+        for (i, picture) in images.enumerated()
+        {
+            var imgContainer = UIView()
+            var img = UIImageView()
+            imgContainer.layer.borderWidth = 1
+            imgContainer.layer.borderColor = UIColor.white.cgColor
+            imgContainer.layer.cornerRadius = 8
+            img.image = picture
+            imgContainer.addSubview(img)
+            imgContainer.clipsToBounds = true
+            let prevImg = container.subviews.last!
+            container.addSubview(imgContainer)
+            setImageConstraintsForContainer(img: &img)
+            setConstraintsForPicture(picture: &imgContainer, previous: prevImg, index: i)
+        }
     }
     
-    func setTextForStoryWithConstraints() {
-        contentTextLabel = RSCustomLabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        contentTextLabel.numberOfLines = 0
-        contentTextLabel.sizeToFit()
-        contentTextLabel.textColor = UIColor.white
-        contentTextLabel.layer.borderWidth = 1
-        contentTextLabel.layer.borderColor = UIColor.white.cgColor
-        contentTextLabel.layer.cornerRadius = 8
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineHeightMultiple = 1.3
-        contentTextLabel.attributedText = NSMutableAttributedString(string: contentText!, attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle])
-        let size = 24 * (contentImageView!.frame.height / 500)
-        contentTextLabel.font = UIFont(name: "Rockwell-Regular", size: size)
-        contentTextLabel.lineBreakMode = .byWordWrapping
-        container.addSubview(contentTextLabel)
-        contentTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        let margins = contentImageView!.layoutMarginsGuide
-        contentTextLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
-        contentTextLabel.widthAnchor.constraint(equalToConstant: contentImageView!.frame.width).isActive = true
-        contentTextLabel.topAnchor.constraint(equalTo: drawings.bottomAnchor, constant: 1).isActive = true
+    func setImageConstraintsForContainer(img: inout UIImageView) {
+        let margins = img.superview!.layoutMarginsGuide
+        img.clipsToBounds = true
+        img.layer.cornerRadius = img.superview!.layer.cornerRadius / 2
+        let size: CGFloat = mainImageView!.frame.height / 500
+        let w: CGFloat = mainImageView!.bounds.width - (22 * size)
+        let h: CGFloat = mainImageView!.bounds.height - (22 * size)
+        img.contentMode = .scaleAspectFill
+        img.translatesAutoresizingMaskIntoConstraints = false
+        img.heightAnchor.constraint(equalToConstant: h).isActive = true
+        img.widthAnchor.constraint(equalToConstant: w).isActive = true
+        img.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
+        img.centerYAnchor.constraint(equalTo: margins.centerYAnchor).isActive = true
+    }
+    
+    func setConstraintsForPicture(picture: inout UIView, previous: UIView, index: Int) {
+        picture.translatesAutoresizingMaskIntoConstraints = false
+        let magrinX = mainImageView!.layoutMarginsGuide
+        picture.centerXAnchor.constraint(equalTo: magrinX.centerXAnchor).isActive = true
+        picture.widthAnchor.constraint(equalToConstant: mainImageView!.bounds.width).isActive = true
+        picture.heightAnchor.constraint(equalToConstant: mainImageView!.bounds.height).isActive = true
+        let margin = previous.layoutMarginsGuide
+        var size: CGFloat = 27 * mainImageView!.frame.height / 500
+        if (index == 0)
+        {
+            size = label.frame.height / 1.5
+        }
+        picture.topAnchor.constraint(equalTo: margin.bottomAnchor, constant: size).isActive = true
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         var h: CGFloat = 0
-        var rest: CGFloat = 40 * (contentImageView!.frame.height / 500)
+        var rest: CGFloat = 27 * (mainImageView!.frame.height / 500)
         for i: UIView in container.subviews {
-            h += i.bounds.height
+            h += (i.bounds.height + (27 * mainImageView!.frame.height / 500))
         }
         if (dh.1 == 1)
         {
             rest += UIScreen.main.bounds.height
         }
         scroll.contentSize = CGSize(width: scroll.contentSize.width, height: hc + h + rest)
+        print(scroll.contentSize)
     }
 }
-
