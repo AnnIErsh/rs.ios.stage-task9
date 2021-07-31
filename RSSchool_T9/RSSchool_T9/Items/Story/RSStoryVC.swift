@@ -51,8 +51,8 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         view.layer.backgroundColor = UIColor.black.cgColor
         makeScroll()
-        makeCloseButton()
         setImageContent()
+        makeCloseButton()
         setStrokeWithConstraints()
         setDrawingsWithConstraints()
         setTextForStoryWithConstraints()
@@ -96,7 +96,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         close.translatesAutoresizingMaskIntoConstraints = false
         let margins = container.layoutMarginsGuide
         close.topAnchor.constraint(equalTo: margins.topAnchor, constant: 10).isActive = true
-        close.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 0).isActive = true
+        close.trailingAnchor.constraint(equalTo: contentImageView!.trailingAnchor, constant: 0).isActive = true
         let heightConstraint = NSLayoutConstraint(item: close, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: close.frame.size.height)
         let widthConstraint = NSLayoutConstraint(item: close, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: close.frame.size.width)
         heightConstraint.isActive = true
