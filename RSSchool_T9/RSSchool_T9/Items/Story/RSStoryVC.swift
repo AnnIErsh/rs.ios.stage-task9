@@ -42,7 +42,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
             return UIScreen.main.bounds.width
         }
     }
-    
+    var hc: CGFloat = 0
     var scroll: UIScrollView!
     var container: UIView!
     var label: UILabel!
@@ -61,22 +61,21 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
     func makeScroll() {
         scroll = UIScrollView(frame: CGRect(origin: view.bounds.origin, size: CGSize(width: dw, height: dh)))
         scroll.delegate = self
-        scroll.contentSize = CGSize(width: dw, height: 5000)
+        scroll.contentSize = CGSize(width: dw, height: 10)
         scroll.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scroll)
-        scroll.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        scroll.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        scroll.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        scroll.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        let margins = view.layoutMarginsGuide
+        scroll.topAnchor.constraint(equalTo: margins.topAnchor, constant: 0).isActive = true
+        scroll.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        scroll.widthAnchor.constraint(equalToConstant: dw).isActive = true
+        scroll.heightAnchor.constraint(equalToConstant: dh).isActive = true
         container = UIView(frame: CGRect(origin: view.bounds.origin, size: CGSize(width: dw, height: dh)))
         container.translatesAutoresizingMaskIntoConstraints = false
         scroll.addSubview(container)
-        let margins = view.layoutMarginsGuide
-        container.centerXAnchor.constraint(equalTo: margins.centerXAnchor, constant: 0).isActive = true
-        let heightConstraint = NSLayoutConstraint(item: container!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: container.frame.size.height)
-        let widthConstraint = NSLayoutConstraint(item: container!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: container.frame.size.width)
-        heightConstraint.isActive = true
-        widthConstraint.isActive = true
+        container.topAnchor.constraint(equalTo: scroll.topAnchor, constant: 0).isActive = true
+        container.centerXAnchor.constraint(equalTo: scroll.centerXAnchor, constant: 0).isActive = true
+        container.widthAnchor.constraint(equalToConstant: dw).isActive = true
+        container.heightAnchor.constraint(equalToConstant: dh).isActive = true
     }
     
     func makeCloseButton() {
@@ -137,7 +136,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
     func setImageConstraints() {
         contentImageView!.translatesAutoresizingMaskIntoConstraints = false
         let margins = container.layoutMarginsGuide
-        let hc = dw * 80 / 374
+        hc = dw * 80 / 374
         contentImageView!.topAnchor.constraint(equalTo: margins.topAnchor, constant: hc).isActive = true
         contentImageView!.centerXAnchor.constraint(equalTo: margins.centerXAnchor, constant: 0).isActive = true
         let heightConstraint = NSLayoutConstraint(item: contentImageView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: contentImageView!.frame.size.height)
@@ -261,6 +260,15 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
         contentTextLabel.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
         contentTextLabel.widthAnchor.constraint(equalToConstant: contentImageView!.frame.width).isActive = true
         contentTextLabel.topAnchor.constraint(equalTo: drawings.bottomAnchor, constant: 1).isActive = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        var h: CGFloat = 0
+        for i: UIView in container.subviews {
+            h += i.bounds.height
+        }
+        scroll.contentSize = CGSize(width: scroll.contentSize.width, height: hc + h + 40)
     }
 }
 

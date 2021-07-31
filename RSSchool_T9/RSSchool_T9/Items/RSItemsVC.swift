@@ -81,6 +81,7 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         view.addSubview(itemCV)
         itemCV.translatesAutoresizingMaskIntoConstraints = false
         let margins = view.layoutMarginsGuide
+        itemCV.frameLayoutGuide.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
         itemCV.frameLayoutGuide.widthAnchor.constraint(equalToConstant: dwidth).isActive = true
         itemCV.frameLayoutGuide.heightAnchor.constraint(equalToConstant: dheight).isActive = true
         itemCV.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
@@ -91,11 +92,11 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         itemCV.setNeedsLayout()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        itemCV.frame = UIScreen.main.bounds
-        itemCV.center = view.center
-    }
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        //itemCV.frame = UIScreen.main.bounds
+//        itemCV.center = view.center
+//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
