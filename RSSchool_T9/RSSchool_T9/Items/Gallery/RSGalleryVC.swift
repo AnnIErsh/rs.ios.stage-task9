@@ -9,9 +9,10 @@
 
 import UIKit
 
-class RSGalleryVC: UIViewController, UIScrollViewDelegate {
+class RSGalleryVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
-    var scroll: UIScrollView!
+    var scroll: RSScrollView!
+    var tap: UITapGestureRecognizer?
     var container: UIView!
     var images: [UIImage]!
     var close: UIButton = UIButton(frame: CGRect(x: 10, y: 10, width: 44, height: 44))
@@ -56,11 +57,16 @@ class RSGalleryVC: UIViewController, UIScrollViewDelegate {
         setStrokeWithConstraints()
         setPictureViews()
         scroll.isScrollEnabled = true
+        tap = UITapGestureRecognizer(target: self, action: #selector(addActionOnImg))
+        tap!.numberOfTapsRequired = 1
+        scroll.addGestureRecognizer(tap!)
+        scroll.canCancelContentTouches = false
     }
     
     func makeScroll() {
-        scroll = UIScrollView(frame: CGRect(origin: view.bounds.origin, size: CGSize(width: dw.0, height: dh.0)))
+        scroll = RSScrollView(frame: CGRect(origin: view.bounds.origin, size: CGSize(width: dw.0, height: dh.0)))
         scroll.delegate = self
+        scroll.isUserInteractionEnabled = true
         scroll.contentSize = CGSize(width: dw.0, height: dh.0)
         scroll.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scroll)
@@ -282,6 +288,25 @@ class RSGalleryVC: UIViewController, UIScrollViewDelegate {
             rest += UIScreen.main.bounds.height
         }
         scroll.contentSize = CGSize(width: scroll.contentSize.width, height: hc + h + rest)
-        print(scroll.contentSize)
+    }
+    
+    @objc func addActionOnImg() {
+        let point:CGPoint = tap!.location(in: scroll)
+        for imgView: UIView in container.subviews
+        {
+            if (imgView.subviews.count > 0 && imgView.subviews[0].isKind(of: UIImageView.self))
+            {
+                let img = imgView.subviews[0]
+                let pointInside = scroll.convert(point, to: img.coordinateSpace)
+                if (img.bounds.contains(pointInside))
+                {
+                    let pictureVC = RSPictureVC()
+                    let imageToShow = img as! UIImageView
+                    pictureVC.img.image = imageToShow.image
+                    pictureVC.modalPresentationStyle = .overFullScreen
+                    present(pictureVC, animated: true, completion: nil)
+                }
+            }
+        }
     }
 }
