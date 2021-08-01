@@ -11,8 +11,8 @@ import UIKit
 
 class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
 
-    var container: UIView!
-    var scroll: RSScrollView!
+    var container = UIView()
+    var scroll: RSZoomScrollView!
     var close: UIButton = UIButton(frame: CGRect(x: 10, y: 10, width: 44, height: 44))
     var img = UIImageView()
     var tap: UITapGestureRecognizer?
@@ -39,6 +39,13 @@ class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        let margins = view.layoutMarginsGuide
+        view.addSubview(container)
+        container.widthAnchor.constraint(equalToConstant: dwidth).isActive = true
+        container.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        container.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
+        container.centerYAnchor.constraint(equalTo: margins.centerYAnchor).isActive = true
         view.layer.backgroundColor = UIColor.black.cgColor
         makeZoomScroll()
         setImageToContainer()
@@ -46,9 +53,12 @@ class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDe
         tap = UITapGestureRecognizer(target: self, action: #selector(tapOnPicture))
         scroll.addGestureRecognizer(tap!)
         scroll.delegate = self
+        scroll.maximumZoomScale = 3.0
         scroll.isUserInteractionEnabled = true
         scroll.canCancelContentTouches = false
         tap!.numberOfTapsRequired = 1
+        scroll.isPagingEnabled = false
+        scroll.bouncesZoom = false
     }
     
     @objc func tapOnPicture() {
@@ -67,8 +77,18 @@ class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDe
         }
     }
     
+    func makeContainer() {
+        container.translatesAutoresizingMaskIntoConstraints = false
+        let margins = view.layoutMarginsGuide
+        view.addSubview(container)
+        container.widthAnchor.constraint(equalToConstant: dwidth).isActive = true
+        container.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        container.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
+        container.centerYAnchor.constraint(equalTo: margins.centerYAnchor).isActive = true
+    }
+    
     func makeZoomScroll() {
-        scroll = RSScrollView()
+        scroll = RSZoomScrollView()
         scroll.delegate = self
         scroll.contentSize = CGSize(width: dwidth, height: dheight)
         scroll.translatesAutoresizingMaskIntoConstraints = false
@@ -78,25 +98,19 @@ class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDe
         scroll.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
         scroll.widthAnchor.constraint(equalToConstant: dwidth).isActive = true
         scroll.heightAnchor.constraint(equalToConstant: dheight).isActive = true
-        container = UIView(frame: CGRect(origin: view.bounds.origin, size: CGSize(width: dwidth, height: dheight)))
-        scroll.addSubview(container)
-        container.translatesAutoresizingMaskIntoConstraints = false
-        container.topAnchor.constraint(equalTo: scroll.topAnchor, constant: 0).isActive = true
-        container.centerXAnchor.constraint(equalTo: scroll.centerXAnchor, constant: 0).isActive = true
-        container.widthAnchor.constraint(equalToConstant: dwidth).isActive = true
-        container.heightAnchor.constraint(equalToConstant: dheight).isActive = true
     }
     
     func setImageToContainer() {
-        let margins = container.layoutMarginsGuide
+                
         img.clipsToBounds = true
         img.contentMode = .scaleAspectFit
-        container.addSubview(img)
+        scroll.addSubview(img)
         img.translatesAutoresizingMaskIntoConstraints = false
         img.widthAnchor.constraint(equalToConstant: dwidth).isActive = true
-        img.topAnchor.constraint(equalTo: container.topAnchor, constant: 0).isActive = true
-        img.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
-        img.centerYAnchor.constraint(equalTo: margins.centerYAnchor).isActive = true
+        img.topAnchor.constraint(equalTo: scroll.topAnchor, constant: 0).isActive = true
+        img.centerXAnchor.constraint(equalTo: scroll.centerXAnchor).isActive = true
+        img.centerYAnchor.constraint(equalTo: scroll.centerYAnchor).isActive = true
+
     }
     
     func makeCloseButton() {
@@ -123,7 +137,7 @@ class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDe
         close.topAnchor.constraint(equalTo: margins.topAnchor, constant: 30).isActive = true
         close.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25).isActive = true
         let heightConstraint = NSLayoutConstraint(item: close, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: close.frame.size.height)
-        let widthConstraint = NSLayoutConstraint(item: close, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: close.frame.size.width) 
+        let widthConstraint = NSLayoutConstraint(item: close, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: close.frame.size.width)
         heightConstraint.isActive = true
         widthConstraint.isActive = true
     }
@@ -134,20 +148,24 @@ class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDe
         {
             let newH = UIScreen.main.bounds.height
             let newW = UIScreen.main.bounds.width
-            scroll.contentSize = CGSize(width: newW, height: newH)
+            scroll.contentSize = CGSize(width: container.bounds.width, height: container.bounds.height)
             scroll.updateConstraint(attribute: NSLayoutConstraint.Attribute.height, constant: newH)
             scroll.updateConstraint(attribute: NSLayoutConstraint.Attribute.width, constant: newW)
-            container.updateConstraint(attribute: NSLayoutConstraint.Attribute.height, constant: newH)
-            container.updateConstraint(attribute: NSLayoutConstraint.Attribute.width, constant: newW)
         }
         else
         {
-            scroll.contentSize = CGSize(width: dwidth, height: dheight)
-            container.updateConstraint(attribute: NSLayoutConstraint.Attribute.height, constant: dheight)
-            container.updateConstraint(attribute: NSLayoutConstraint.Attribute.width, constant: dwidth)
+            scroll.contentSize = CGSize(width: container.bounds.width, height: container.bounds.height)
             scroll.updateConstraint(attribute: NSLayoutConstraint.Attribute.height, constant: dheight)
             scroll.updateConstraint(attribute: NSLayoutConstraint.Attribute.width, constant: dwidth)
         }
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return img
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        scroll.layoutIfNeeded()
     }
 }
 
