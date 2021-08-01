@@ -58,7 +58,8 @@ class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDe
         scroll.canCancelContentTouches = false
         tap!.numberOfTapsRequired = 1
         scroll.isPagingEnabled = false
-        scroll.bouncesZoom = false
+//        scroll.bouncesZoom = false
+//        scroll.bounces = false
     }
     
     @objc func tapOnPicture() {

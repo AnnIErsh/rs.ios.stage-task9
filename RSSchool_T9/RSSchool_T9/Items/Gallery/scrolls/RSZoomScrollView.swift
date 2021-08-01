@@ -12,6 +12,7 @@ import UIKit
 class RSZoomScrollView : UIScrollView {
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         var which : Int {
             return 1
         }
@@ -20,28 +21,6 @@ class RSZoomScrollView : UIScrollView {
             super.layoutSubviews()
             if let zoomView = self.delegate?.viewForZooming?(in: self)
             {
-                let w = self.bounds.width
-                let h = self.bounds.height
-                let zoomW = zoomView.frame.width
-                let zommH = zoomView.frame.height
-                var frame = zoomView.frame
-                if zoomW < w
-                {
-                    frame.origin.x = (w - zoomW) / 2
-                }
-                else
-                {
-                    frame.origin.x = 0
-                }
-                if zommH < h
-                {
-                    frame.origin.y = (h - zommH) / 2
-                }
-                else
-                {
-                    frame.origin.y = 0
-                }
-                zoomView.frame = frame
                 zoomView.center = self.superview!.center
             }
         default: break
