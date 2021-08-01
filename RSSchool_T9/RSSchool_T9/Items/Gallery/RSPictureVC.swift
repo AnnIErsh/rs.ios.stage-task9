@@ -90,14 +90,11 @@ class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDe
     func setImageToContainer() {
         let margins = container.layoutMarginsGuide
         img.clipsToBounds = true
-        let ratio: CGFloat = 414 / 552
-        let w: CGFloat = container.bounds.width
-        let h: CGFloat = container.bounds.height * ratio
-        img.contentMode = .scaleAspectFill
+        img.contentMode = .scaleAspectFit
         container.addSubview(img)
         img.translatesAutoresizingMaskIntoConstraints = false
-        img.heightAnchor.constraint(equalToConstant: h).isActive = true
-        img.widthAnchor.constraint(equalToConstant: w).isActive = true
+        img.widthAnchor.constraint(equalToConstant: dwidth).isActive = true
+        img.topAnchor.constraint(equalTo: container.topAnchor, constant: 0).isActive = true
         img.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
         img.centerYAnchor.constraint(equalTo: margins.centerYAnchor).isActive = true
     }
@@ -133,6 +130,24 @@ class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDe
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
+        if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
+        {
+            let newH = UIScreen.main.bounds.height
+            let newW = UIScreen.main.bounds.width
+            scroll.contentSize = CGSize(width: newW, height: newH)
+            scroll.updateConstraint(attribute: NSLayoutConstraint.Attribute.height, constant: newH)
+            scroll.updateConstraint(attribute: NSLayoutConstraint.Attribute.width, constant: newW)
+            container.updateConstraint(attribute: NSLayoutConstraint.Attribute.height, constant: newH)
+            container.updateConstraint(attribute: NSLayoutConstraint.Attribute.width, constant: newW)
+        }
+        else
+        {
+            scroll.contentSize = CGSize(width: dwidth, height: dheight)
+            container.updateConstraint(attribute: NSLayoutConstraint.Attribute.height, constant: dheight)
+            container.updateConstraint(attribute: NSLayoutConstraint.Attribute.width, constant: dwidth)
+            scroll.updateConstraint(attribute: NSLayoutConstraint.Attribute.height, constant: dheight)
+            scroll.updateConstraint(attribute: NSLayoutConstraint.Attribute.width, constant: dwidth)
+        }
     }
 }
+
