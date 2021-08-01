@@ -119,7 +119,7 @@ class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDe
         close.addTarget(self, action: #selector(tapOnButton), for: .touchUpInside)
         close.layer.cornerRadius = close.layer.frame.height / 2
         close.layer.borderColor = UIColor.white.cgColor
-        close.layer.backgroundColor = UIColor.black.cgColor
+        close.layer.backgroundColor = UIColor.clear.cgColor
         close.layer.borderWidth = 1
         close.tintColor = UIColor.white
         let image = UIImage(systemName: "multiply", withConfiguration: UIImage.SymbolConfiguration(font: UIFont(name: "SFProDisplay-Regular", size: 22)!))

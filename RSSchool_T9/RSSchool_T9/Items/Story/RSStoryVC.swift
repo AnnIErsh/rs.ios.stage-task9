@@ -9,7 +9,7 @@
 
 import UIKit
 
-class RSStoryVC: UIViewController, UIScrollViewDelegate {
+class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
     var contentImageView: UIImageView?
     var contentImage: UIImage?
@@ -19,8 +19,8 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
     var contentTitleText: String?
     var close: UIButton = UIButton(frame: CGRect(x: 10, y: 10, width: 44, height: 44))
     var stroke: UIView!
-    var drawings: UIView!
-    
+    var drawings: UICollectionView!
+    var paths: [CGPath]!
     var dw: (CGFloat, Int) {
         if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
         {
@@ -226,15 +226,23 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
     }
     
     func setDrawingsWithConstraints() {
-        drawings = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 300))
+        drawings = UICollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 300), collectionViewLayout: UICollectionViewFlowLayout())
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: drawings.frame.width / 2, height: drawings.frame.height / 3)
+        layout.sectionInset = UIEdgeInsets(top: 40, left: 50, bottom: 0, right: 0)
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 100
+        drawings.collectionViewLayout = layout
+        drawings.dataSource = self
+        drawings.delegate = self
+        drawings.register(RSDrawingsCell.self, forCellWithReuseIdentifier: "RSDrawingsCell")
+        drawings.isScrollEnabled = true
         drawings.layer.backgroundColor = UIColor.black.cgColor
         drawings.layer.cornerRadius = 20
-        drawings.layer.borderWidth = 1
-        drawings.layer.borderColor = UIColor.white.cgColor
         container.addSubview(drawings)
         drawings.translatesAutoresizingMaskIntoConstraints = false
         let margins = contentImageView!.layoutMarginsGuide
-        let aspectRatio: CGFloat = 3 / 4.5
+        let aspectRatio: CGFloat = 3 / 4
         let aspectRatioH: CGFloat = 3 / 8
         drawings.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
         drawings.widthAnchor.constraint(equalTo: contentImageView!.heightAnchor,
@@ -278,6 +286,36 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate {
             rest += UIScreen.main.bounds.height
         }
         scroll.contentSize = CGSize(width: scroll.contentSize.width, height: hc + h + rest)
+    }
+    
+    func setPaths(layer: inout CALayer, index: Int) {
+        
+        func createLayer(with path: CGPath?, color: UIColor?, andWidth w: Int) -> CAShapeLayer? {
+            let layer = CAShapeLayer()
+            layer.strokeColor = color?.cgColor
+            layer.fillColor = UIColor.clear.cgColor
+            layer.lineWidth = CGFloat(w)
+            layer.lineJoin = .round
+            layer.lineCap = .round
+            layer.path = path
+            layer.opacity = 1
+            return layer
+        }
+        
+        layer = createLayer(with: paths[index], color: UIColor.white, andWidth: 1)!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = drawings.dequeueReusableCell(withReuseIdentifier: "RSDrawingsCell", for: indexPath)
+        let layer = cell.contentView.layer
+        var layer0 = CALayer()
+        setPaths(layer: &layer0, index: indexPath.row)
+        layer.addSublayer(layer0)
+        return cell
     }
 }
 

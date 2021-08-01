@@ -13,6 +13,7 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     var itemCV: UICollectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: RSItemsLayout())
     var textForStory: Array<(String, Int)> = []
     var imagesForGallery: [[UIImage]] = []
+    var paths: [[CGPath]] = []
     var dwidth: CGFloat {
         if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
         {
@@ -59,6 +60,7 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             img.image = story.coverImage
             title.text = story.title
             text.text = "Story"
+            paths.append(story.paths)
             textForStory.append((story.text, indexPath.row))
             imagesForGallery.append([UIImage()])
         }
@@ -69,6 +71,7 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             title.text = gallery.title
             text.text = "Gallery"
             let images = gallery.images
+            paths.append([])
             textForStory.append(("", indexPath.row))
             imagesForGallery.append(images)
         }
@@ -122,6 +125,7 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             let title = img.subviews[0] as? UILabel
             storyVC.contentTitleText = title?.text
             storyVC.contentText = textForStory[indexPath.row].0
+            storyVC.paths = paths[indexPath.row]
             storyVC.modalPresentationStyle = .overFullScreen
             present(storyVC, animated: true, completion: nil)
         }
@@ -135,6 +139,5 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             galleryVC.modalPresentationStyle = .overFullScreen
             present(galleryVC, animated: true, completion: nil)
         }
-        
     }
 }
