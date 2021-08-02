@@ -14,8 +14,9 @@ class RSTabBarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let itemsVC = RSItemsVC()
-        let settingsVC = RSSettingsVC()
-        self.viewControllers = [itemsVC, settingsVC]
+        let settingsVC = RSSettingsNVC()
+        let navVC = UINavigationController(rootViewController: settingsVC)
+        self.viewControllers = [itemsVC, navVC]
         self.tabBar.barTintColor = UIColor.white
         self.tabBar.unselectedItemTintColor = UIColor(red: 0.235, green: 0.235, blue: 0.263, alpha: 0.6)
         self.tabBar.tintColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
@@ -32,6 +33,6 @@ class RSTabBarVC: UITabBarController {
         item1.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Medium", size: 10)!, NSAttributedString.Key.paragraphStyle: paragraphStyle], for: .selected)
         item1.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Medium", size: 10)!, NSAttributedString.Key.paragraphStyle: paragraphStyle], for: .normal)
         itemsVC.tabBarItem = item0
-        settingsVC.tabBarItem = item1
+        navVC.tabBarItem = item1
     }
 }

@@ -26,6 +26,9 @@
 		2BB9F31226AF5FBE00F43852 /* s4-title.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2BB9F31126AF5FBE00F43852 /* s4-title.txt */; };
 		E720964426B70E3600DCDBA9 /* RSZoomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E720964326B70E3600DCDBA9 /* RSZoomScrollView.swift */; };
 		E720964626B73F5100DCDBA9 /* RSDrawingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E720964526B73F5100DCDBA9 /* RSDrawingsCell.swift */; };
+		E720964A26B75EFD00DCDBA9 /* RSSettingsNVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E720964926B75EFD00DCDBA9 /* RSSettingsNVC.m */; };
+		E720965026B7747800DCDBA9 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E720964F26B7747800DCDBA9 /* SFProDisplay-Semibold.ttf */; };
+		E720965426B7799600DCDBA9 /* RSSettingsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E720965326B7799600DCDBA9 /* RSSettingsViewCell.m */; };
 		E726A13E26B5701500A34F32 /* RSGalleryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E726A13D26B5701500A34F32 /* RSGalleryVC.swift */; };
 		E726A14026B5B25C00A34F32 /* RSPictureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E726A13F26B5B25C00A34F32 /* RSPictureVC.swift */; };
 		E726A14526B5E2AB00A34F32 /* RSScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E726A14426B5E2AB00A34F32 /* RSScrollView.swift */; };
@@ -33,7 +36,6 @@
 		E728F3F826B1A81200938B2C /* RSItemsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E728F3F726B1A81200938B2C /* RSItemsLayout.swift */; };
 		E728F3FA26B223C600938B2C /* Rockwell-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E728F3F926B223C600938B2C /* Rockwell-Regular.ttf */; };
 		E741A24D26B0C70000A00A24 /* RSItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A24C26B0C70000A00A24 /* RSItemsVC.swift */; };
-		E741A24F26B0C78300A00A24 /* RSSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A24E26B0C78300A00A24 /* RSSettingsVC.swift */; };
 		E741A25326B0E0E600A00A24 /* RSTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A25226B0E0E600A00A24 /* RSTabBarVC.swift */; };
 		E741A25726B18B0400A00A24 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */; };
 		E741A25826B18B0400A00A24 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E741A25626B18B0400A00A24 /* SFProDisplay-Regular.ttf */; };
@@ -65,6 +67,12 @@
 		2BB9F31126AF5FBE00F43852 /* s4-title.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "s4-title.txt"; sourceTree = "<group>"; };
 		E720964326B70E3600DCDBA9 /* RSZoomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSZoomScrollView.swift; sourceTree = "<group>"; };
 		E720964526B73F5100DCDBA9 /* RSDrawingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSDrawingsCell.swift; sourceTree = "<group>"; };
+		E720964726B75EFC00DCDBA9 /* RSSchool_T9-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RSSchool_T9-Bridging-Header.h"; sourceTree = "<group>"; };
+		E720964826B75EFD00DCDBA9 /* RSSettingsNVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSettingsNVC.h; sourceTree = "<group>"; };
+		E720964926B75EFD00DCDBA9 /* RSSettingsNVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSettingsNVC.m; sourceTree = "<group>"; };
+		E720964F26B7747800DCDBA9 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
+		E720965226B7799600DCDBA9 /* RSSettingsViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSettingsViewCell.h; sourceTree = "<group>"; };
+		E720965326B7799600DCDBA9 /* RSSettingsViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSettingsViewCell.m; sourceTree = "<group>"; };
 		E726A13D26B5701500A34F32 /* RSGalleryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSGalleryVC.swift; sourceTree = "<group>"; };
 		E726A13F26B5B25C00A34F32 /* RSPictureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSPictureVC.swift; sourceTree = "<group>"; };
 		E726A14426B5E2AB00A34F32 /* RSScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSScrollView.swift; sourceTree = "<group>"; };
@@ -72,7 +80,6 @@
 		E728F3F726B1A81200938B2C /* RSItemsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSItemsLayout.swift; sourceTree = "<group>"; };
 		E728F3F926B223C600938B2C /* Rockwell-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rockwell-Regular.ttf"; sourceTree = "<group>"; };
 		E741A24C26B0C70000A00A24 /* RSItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSItemsVC.swift; sourceTree = "<group>"; };
-		E741A24E26B0C78300A00A24 /* RSSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSettingsVC.swift; sourceTree = "<group>"; };
 		E741A25226B0E0E600A00A24 /* RSTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTabBarVC.swift; sourceTree = "<group>"; };
 		E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		E741A25626B18B0400A00A24 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
@@ -196,6 +203,15 @@
 			path = scrolls;
 			sourceTree = "<group>";
 		};
+		E720965126B7794200DCDBA9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E720965226B7799600DCDBA9 /* RSSettingsViewCell.h */,
+				E720965326B7799600DCDBA9 /* RSSettingsViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		E726A14626B6194100A34F32 /* helpful */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,7 +239,10 @@
 		E741A25026B0C78D00A00A24 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				E741A24E26B0C78300A00A24 /* RSSettingsVC.swift */,
+				E720965126B7794200DCDBA9 /* Cells */,
+				E720964926B75EFD00DCDBA9 /* RSSettingsNVC.m */,
+				E720964826B75EFD00DCDBA9 /* RSSettingsNVC.h */,
+				E720964726B75EFC00DCDBA9 /* RSSchool_T9-Bridging-Header.h */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -244,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */,
+				E720964F26B7747800DCDBA9 /* SFProDisplay-Semibold.ttf */,
 				E741A25626B18B0400A00A24 /* SFProDisplay-Regular.ttf */,
 				E728F3F926B223C600938B2C /* Rockwell-Regular.ttf */,
 			);
@@ -356,6 +376,7 @@
 				2BB9F29526AE01A300F43852 /* s1-title.txt in Resources */,
 				2BB9F31026AF5FB300F43852 /* s4-text.txt in Resources */,
 				2BB9F2FE26AF556600F43852 /* s2-title.txt in Resources */,
+				E720965026B7747800DCDBA9 /* SFProDisplay-Semibold.ttf in Resources */,
 				2BB9E76526AB605900112651 /* Assets.xcassets in Resources */,
 				E741A25726B18B0400A00A24 /* SFProDisplay-Medium.ttf in Resources */,
 				2BB9F30226AF57B500F43852 /* s2-text.txt in Resources */,
@@ -376,12 +397,13 @@
 				E728F3F826B1A81200938B2C /* RSItemsLayout.swift in Sources */,
 				2BB9F30B26AF5EEC00F43852 /* story-3-path.swift in Sources */,
 				2BB9F29126ADFAF100F43852 /* Data.swift in Sources */,
-				E741A24F26B0C78300A00A24 /* RSSettingsVC.swift in Sources */,
+				E720964A26B75EFD00DCDBA9 /* RSSettingsNVC.m in Sources */,
 				E720964626B73F5100DCDBA9 /* RSDrawingsCell.swift in Sources */,
 				E7ADE66A26B4649600481493 /* DelegateSizeProtocol.swift in Sources */,
 				2BB9F2EC26AF1F6200F43852 /* story-1-path.swift in Sources */,
 				E741A25A26B1999300A00A24 /* RSItemsCell.swift in Sources */,
 				E726A13E26B5701500A34F32 /* RSGalleryVC.swift in Sources */,
+				E720965426B7799600DCDBA9 /* RSSettingsViewCell.m in Sources */,
 				E741A25326B0E0E600A00A24 /* RSTabBarVC.swift in Sources */,
 				E726A14826B619BD00A34F32 /* UIViewExt.swift in Sources */,
 				2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */,
@@ -539,6 +561,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.username.RSSchool-T9";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RSSchool_T9/Settings/RSSchool_T9-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -560,6 +583,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.username.RSSchool-T9";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RSSchool_T9/Settings/RSSchool_T9-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
