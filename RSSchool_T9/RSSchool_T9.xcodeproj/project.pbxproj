@@ -35,6 +35,7 @@
 		E726A14826B619BD00A34F32 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = E726A14726B619BD00A34F32 /* UIViewExt.swift */; };
 		E728F3F826B1A81200938B2C /* RSItemsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E728F3F726B1A81200938B2C /* RSItemsLayout.swift */; };
 		E728F3FA26B223C600938B2C /* Rockwell-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E728F3F926B223C600938B2C /* Rockwell-Regular.ttf */; };
+		E72DAA7726B8AD73000DFBC1 /* RSColorsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DAA7626B8AD73000DFBC1 /* RSColorsVC.m */; };
 		E741A24D26B0C70000A00A24 /* RSItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A24C26B0C70000A00A24 /* RSItemsVC.swift */; };
 		E741A25326B0E0E600A00A24 /* RSTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A25226B0E0E600A00A24 /* RSTabBarVC.swift */; };
 		E741A25726B18B0400A00A24 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */; };
@@ -79,6 +80,8 @@
 		E726A14726B619BD00A34F32 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		E728F3F726B1A81200938B2C /* RSItemsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSItemsLayout.swift; sourceTree = "<group>"; };
 		E728F3F926B223C600938B2C /* Rockwell-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rockwell-Regular.ttf"; sourceTree = "<group>"; };
+		E72DAA7526B8AD73000DFBC1 /* RSColorsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSColorsVC.h; sourceTree = "<group>"; };
+		E72DAA7626B8AD73000DFBC1 /* RSColorsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSColorsVC.m; sourceTree = "<group>"; };
 		E741A24C26B0C70000A00A24 /* RSItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSItemsVC.swift; sourceTree = "<group>"; };
 		E741A25226B0E0E600A00A24 /* RSTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTabBarVC.swift; sourceTree = "<group>"; };
 		E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
@@ -243,6 +246,8 @@
 				E720964926B75EFD00DCDBA9 /* RSSettingsNVC.m */,
 				E720964826B75EFD00DCDBA9 /* RSSettingsNVC.h */,
 				E720964726B75EFC00DCDBA9 /* RSSchool_T9-Bridging-Header.h */,
+				E72DAA7526B8AD73000DFBC1 /* RSColorsVC.h */,
+				E72DAA7626B8AD73000DFBC1 /* RSColorsVC.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 				E720964626B73F5100DCDBA9 /* RSDrawingsCell.swift in Sources */,
 				E7ADE66A26B4649600481493 /* DelegateSizeProtocol.swift in Sources */,
 				2BB9F2EC26AF1F6200F43852 /* story-1-path.swift in Sources */,
+				E72DAA7726B8AD73000DFBC1 /* RSColorsVC.m in Sources */,
 				E741A25A26B1999300A00A24 /* RSItemsCell.swift in Sources */,
 				E726A13E26B5701500A34F32 /* RSGalleryVC.swift in Sources */,
 				E720965426B7799600DCDBA9 /* RSSettingsViewCell.m in Sources */,

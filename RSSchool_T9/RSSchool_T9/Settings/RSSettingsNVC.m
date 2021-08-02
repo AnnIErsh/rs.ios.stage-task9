@@ -9,10 +9,12 @@
 
 #import "RSSettingsNVC.h"
 #import "RSSettingsViewCell.h"
+#import "RSColorsVC.h"
 
 @interface RSSettingsNVC ()
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) RSColorsVC *vc;
 
 @end
 
@@ -20,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.vc = [[RSColorsVC alloc] init];
     self.navigationController.navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 88);
     self.title = @"Settings";
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 10, 100, 100) style:UITableViewStyleGrouped];
@@ -61,6 +64,13 @@
         cell = [[RSSettingsViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"RSSettingsViewCell"];
     }
     cell.numb = indexPath.row;
+    cell.selectedBackgroundView.backgroundColor = self.tableView.backgroundColor;
+    cell.backgroundColor = self.tableView.backgroundColor;
+    cell.inputView.backgroundColor = self.tableView.backgroundColor;
+    cell.layer.backgroundColor = self.tableView.backgroundColor.CGColor;
+    cell.inputView.layer.backgroundColor = self.tableView.backgroundColor.CGColor;
+    cell.selectedBackgroundView.layer.backgroundColor = self.tableView.backgroundColor.CGColor;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -73,19 +83,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (indexPath.row == 1)
     {
-        
+        [self.navigationController pushViewController:self.vc animated:YES];
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    if (indexPath.row == 1)
-//    {
-//        return  60;
-//    }
+
     return 51;
 }
 

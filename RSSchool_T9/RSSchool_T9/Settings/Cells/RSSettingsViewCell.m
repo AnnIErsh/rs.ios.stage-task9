@@ -32,9 +32,6 @@
 }
 
 - (void)layoutSubviews {
-    self.backgroundColor = UIColor.clearColor;
-    self.contentView.backgroundColor = UIColor.clearColor;
-    self.selectedBackgroundView.backgroundColor = UIColor.clearColor;
     self.content = [UIView new];
     self.content.backgroundColor = UIColor.whiteColor;
     self.content.layer.backgroundColor = UIColor.whiteColor.CGColor;
@@ -42,19 +39,6 @@
     self.line = [UIView new];
     self.line.backgroundColor = self.superview.backgroundColor;
     [self addConstraintsToCells];
-    
-    if (self.numb == 0)
-    {
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    if (self.numb == 1 && self.selected)
-    {
-        for (UIView *v in self.contentView.subviews)
-        {
-            self.contentView.backgroundColor = UIColor.clearColor;
-            v.backgroundColor = UIColor.lightGrayColor;
-        }
-    }
     [super layoutSubviews];
 }
 
@@ -63,7 +47,6 @@
     self.content.translatesAutoresizingMaskIntoConstraints = NO;
     if (self.numb == 0)
     {
-        self.selectedBackgroundView.backgroundColor = UIColor.clearColor;
         [self.content.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
         [self.content.leadingAnchor constraintEqualToAnchor:self.leadingAnchor].active = YES;
         [self.content.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-(self.frame.size.height / 4)].active = YES;
@@ -95,13 +78,17 @@
         [rect.leadingAnchor constraintEqualToAnchor:self.leadingAnchor].active = YES;
         [rect.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-(self.frame.size.height / 2)].active = YES;
         [rect.trailingAnchor constraintEqualToAnchor:self.trailingAnchor].active = YES;
-        self.selectedBackgroundView.backgroundColor = UIColor.clearColor;
         [self.content.topAnchor constraintEqualToAnchor:self.topAnchor constant:self.frame.size.height / 4].active = YES;
         [self.content.leadingAnchor constraintEqualToAnchor:self.leadingAnchor].active = YES;
         [self.content.bottomAnchor constraintEqualToAnchor:self.bottomAnchor].active = YES;
         [self.content.trailingAnchor constraintEqualToAnchor:self.trailingAnchor].active = YES;
         [self addStrokeColorLabel];
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if (self.highlighted)
+        {
+            self.content.backgroundColor = UIColor.lightGrayColor;
+            rect.backgroundColor = UIColor.lightGrayColor;
+        }
     }
 }
 
