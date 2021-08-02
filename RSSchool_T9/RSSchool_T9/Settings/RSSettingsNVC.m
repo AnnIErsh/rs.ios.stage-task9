@@ -25,6 +25,10 @@
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 10, 100, 100) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    //self.tableView.separatorColor = self.tableView.backgroundColor;
+
+    //self.tableView.separatorColor = [UIColor clearColor];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:self.tableView];
     [self makeTitleItem];
     [self addConstraintsToTableView];
@@ -60,6 +64,7 @@
         cell = [[RSSettingsViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"RSSettingsViewCell"];
     }
     cell.textLabel.text = @"color";
+    cell.numb = indexPath.row;
     return cell;
 }
 
@@ -73,6 +78,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
 }
 
 @end

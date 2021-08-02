@@ -12,7 +12,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RSSettingsViewCell : UITableViewCell
-
+@property (nonatomic, strong) UIView *content;
+@property (nonatomic) NSInteger numb;
+@property (nonatomic, strong) UIView *line;
 @end
 
 NS_ASSUME_NONNULL_END
