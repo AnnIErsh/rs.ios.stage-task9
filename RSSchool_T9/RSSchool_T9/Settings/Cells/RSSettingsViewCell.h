@@ -15,6 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIView *content;
 @property (nonatomic) NSInteger numb;
 @property (nonatomic, strong) UIView *line;
+@property (nonatomic, strong) UILabel *drawLabel;
+@property (nonatomic, strong) UILabel *strokeLabel;
+@property (nonatomic, strong) UILabel *colorSubLabel;
+@property (nonatomic, strong) UISwitch *switcher;
 @end
 
 NS_ASSUME_NONNULL_END
