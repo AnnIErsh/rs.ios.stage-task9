@@ -9,9 +9,11 @@
 
 #import "RSColorsVC.h"
 #import "RSColorCell.h"
+#import "UIColor+RSColors.h"
 
 @interface RSColorsVC ()
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic) NSInteger selectedSell;
 @end
 
 @implementation RSColorsVC
@@ -23,6 +25,7 @@
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     [self addConstraintsToTableView];
+    self.selectedSell = 6;
 }
 
 - (void)addConstraintsToTableView {
@@ -40,9 +43,16 @@
     {
         cell = [[RSColorCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"RSColorCell"];
     }
-    cell.textLabel.text = @"#f3af22";
     cell.numb = indexPath.row;
-    cell.selectedBackgroundView.backgroundColor = self.tableView.backgroundColor;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.font = [UIFont fontWithName:@"SFProDisplay-Regular" size:17];
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    paragraphStyle.lineHeightMultiple = 1.08;
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"#f3af22" attributes: @{
+        NSParagraphStyleAttributeName: paragraphStyle}];
+    cell.textLabel.textColor = [UIColor putColor:@(indexPath.row)];
+    string = [UIColor putName:@(indexPath.row)];
+    cell.textLabel.text = string.copy;
     return cell;
 }
 
@@ -55,17 +65,17 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    self.selectedSell = indexPath.row;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     return 51;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    NSIndexPath *path = [NSIndexPath indexPathForRow:12 inSection:0];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:self.selectedSell inSection:0];
     [self.tableView selectRowAtIndexPath:path animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 

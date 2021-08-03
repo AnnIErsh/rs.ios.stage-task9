@@ -35,6 +35,7 @@
     [super setSelected:selected animated:animated];
     if (selected)
     {
+        self.selectedCell = self.numb;
         self.accessoryType = UITableViewCellAccessoryCheckmark;
         self.tintColor = UIColor.redColor;
     }

@@ -37,6 +37,7 @@
 		E728F3FA26B223C600938B2C /* Rockwell-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E728F3F926B223C600938B2C /* Rockwell-Regular.ttf */; };
 		E72DAA7726B8AD73000DFBC1 /* RSColorsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DAA7626B8AD73000DFBC1 /* RSColorsVC.m */; };
 		E72DAA7D26B8C061000DFBC1 /* RSColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DAA7C26B8C061000DFBC1 /* RSColorCell.m */; };
+		E72DAA8226B8CEEA000DFBC1 /* UIColor+RSColors.m in Sources */ = {isa = PBXBuildFile; fileRef = E72DAA8126B8CEEA000DFBC1 /* UIColor+RSColors.m */; };
 		E741A24D26B0C70000A00A24 /* RSItemsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A24C26B0C70000A00A24 /* RSItemsVC.swift */; };
 		E741A25326B0E0E600A00A24 /* RSTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741A25226B0E0E600A00A24 /* RSTabBarVC.swift */; };
 		E741A25726B18B0400A00A24 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */; };
@@ -85,6 +86,8 @@
 		E72DAA7626B8AD73000DFBC1 /* RSColorsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSColorsVC.m; sourceTree = "<group>"; };
 		E72DAA7B26B8C060000DFBC1 /* RSColorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSColorCell.h; sourceTree = "<group>"; };
 		E72DAA7C26B8C061000DFBC1 /* RSColorCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSColorCell.m; sourceTree = "<group>"; };
+		E72DAA8026B8CEEA000DFBC1 /* UIColor+RSColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RSColors.h"; sourceTree = "<group>"; };
+		E72DAA8126B8CEEA000DFBC1 /* UIColor+RSColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RSColors.m"; sourceTree = "<group>"; };
 		E741A24C26B0C70000A00A24 /* RSItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSItemsVC.swift; sourceTree = "<group>"; };
 		E741A25226B0E0E600A00A24 /* RSTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTabBarVC.swift; sourceTree = "<group>"; };
 		E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
@@ -244,9 +247,19 @@
 			path = Layout;
 			sourceTree = "<group>";
 		};
+		E72DAA7F26B8CEB2000DFBC1 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				E72DAA8026B8CEEA000DFBC1 /* UIColor+RSColors.h */,
+				E72DAA8126B8CEEA000DFBC1 /* UIColor+RSColors.m */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
 		E741A25026B0C78D00A00A24 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E72DAA7F26B8CEB2000DFBC1 /* Colors */,
 				E720965126B7794200DCDBA9 /* Cells */,
 				E720964926B75EFD00DCDBA9 /* RSSettingsNVC.m */,
 				E720964826B75EFD00DCDBA9 /* RSSettingsNVC.h */,
@@ -420,6 +433,7 @@
 				E726A14826B619BD00A34F32 /* UIViewExt.swift in Sources */,
 				2BB9F30E26AF5FA900F43852 /* story-4-path.swift in Sources */,
 				E726A14026B5B25C00A34F32 /* RSPictureVC.swift in Sources */,
+				E72DAA8226B8CEEA000DFBC1 /* UIColor+RSColors.m in Sources */,
 				E726A14526B5E2AB00A34F32 /* RSScrollView.swift in Sources */,
 				2BB9E75E26AB605700112651 /* SceneDelegate.swift in Sources */,
 				E720964426B70E3600DCDBA9 /* RSZoomScrollView.swift in Sources */,

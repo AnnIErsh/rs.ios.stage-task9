@@ -11,9 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RSColorCell : UITableViewCell
-@property (nonatomic) NSInteger numb;
-@property (nonatomic) NSInteger selectedCell;
+@interface UIColor (RSColors)
++ (id)putColor:(NSNumber*)t;
++ (id)putName:(NSNumber*)t;
 @end
 
 NS_ASSUME_NONNULL_END
