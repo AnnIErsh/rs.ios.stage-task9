@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol RSStoryDelegate <NSObject>
 - (void)passColor:(UIColor*)theValue;
+@optional
+- (void)passSwitcherState:(BOOL)state;
 @end
 
 NS_ASSUME_NONNULL_END

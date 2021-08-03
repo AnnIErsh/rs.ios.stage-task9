@@ -10,12 +10,13 @@
 import UIKit
 
 class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, RSStoryDelegate {
-    
+        
     var itemCV: UICollectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: RSItemsLayout())
     var textForStory: Array<(String, Int)> = []
     var imagesForGallery: [[UIImage]] = []
     var paths: [[CGPath]] = []
     var colorToDraw = UIColor(red: 0.953, green: 0.686, blue: 0.133, alpha: 1)
+    var swithState = false
     var dwidth: CGFloat {
         if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
         {
@@ -135,6 +136,7 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             storyVC.contentText = textForStory[indexPath.row].0
             storyVC.paths = paths[indexPath.row]
             storyVC.color = colorToDraw
+            storyVC.switchState = self.swithState
             storyVC.modalPresentationStyle = .overFullScreen
             present(storyVC, animated: true, completion: nil)
         }
@@ -153,4 +155,18 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     func pass(_ theValue: UIColor) {
         colorToDraw = theValue
     }
+    
+    func passSwitcherState(_ switcher: Bool) {
+        if (switcher == true)
+        {
+            swithState = true
+            print("SWIFT ON")
+        }
+        else
+        {
+            swithState = false
+            print("SWIFT OFF")
+        }
+    }
+
 }

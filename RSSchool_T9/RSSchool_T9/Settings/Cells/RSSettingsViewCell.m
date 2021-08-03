@@ -152,6 +152,18 @@
     [self.switcher.trailingAnchor constraintEqualToAnchor:self.trailingAnchor constant:-self.separatorInset.left].active = YES;
     [self.switcher.widthAnchor constraintEqualToConstant:self.frame.size.height].active = YES;
     [self.switcher.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
+    [self.switcher addTarget:self action:@selector(pickOnSwitcher:) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+- (void)pickOnSwitcher:(UISwitch *)sender {
+    if (sender.isOn)
+    {
+        NSLog(@"switch on");
+        self.state = YES;
+        return ;
+    }
+    self.state = NO;
 }
 
 @end

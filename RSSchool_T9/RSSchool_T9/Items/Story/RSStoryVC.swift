@@ -12,6 +12,7 @@ import UIKit
 class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, RSStoryDelegate {
 
     var contentImageView: UIImageView?
+    var layerToDraw: CALayer?
     var contentImage: UIImage?
     var contentText: String?
     var contentTextLabel: RSCustomLabel!
@@ -22,6 +23,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
     var drawings: UICollectionView!
     var paths: [CGPath]!
     var color: UIColor!
+    var switchState = false
     var dw: (CGFloat, Int) {
         if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
         {
@@ -313,10 +315,41 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = drawings.dequeueReusableCell(withReuseIdentifier: "RSDrawingsCell", for: indexPath)
         let layer = cell.contentView.layer
-        var layer0 = CALayer()
-        setPaths(layer: &layer0, index: indexPath.row)
-        layer.addSublayer(layer0)
+        let layer0 = createLayer(with: paths[indexPath.row])
+        var counter: CGFloat = 0;
+        if (switchState == true)
+        {
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                if (counter > 1)
+                {
+                    return
+                }
+                layer0?.strokeStart = 0
+                layer0?.strokeEnd = counter
+                
+                print(counter)
+                counter += 0.1
+            }
+        }
+        else
+        {
+            layer0?.strokeStart = 0
+            layer0?.strokeEnd = 1
+        }
+        layer.addSublayer(layer0!)
         return cell
+    }
+    
+    func createLayer(with path: CGPath?) -> CAShapeLayer? {
+        let layer = CAShapeLayer()
+        layer.strokeColor = color.cgColor
+        layer.fillColor = UIColor.clear.cgColor
+        layer.lineWidth = 1
+        layer.lineJoin = .round
+        layer.lineCap = .round
+        layer.path = path
+        layer.opacity = 1
+        return layer
     }
     
     func pass(_ theValue: UIColor) {

@@ -124,4 +124,11 @@
     cell.colorSubLabel.textColor = self.color;
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    RSSettingsViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+    [self.delegateSwift passSwitcherState:cell.state];
+}
+
 @end
