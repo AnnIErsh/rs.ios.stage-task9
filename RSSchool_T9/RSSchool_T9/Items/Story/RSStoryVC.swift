@@ -291,67 +291,18 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
         scroll.contentSize = CGSize(width: scroll.contentSize.width, height: hc + h + rest)
     }
     
-    func setPaths(layer: inout CALayer, index: Int) {
-        
-        func createLayer(with path: CGPath?, color: UIColor?, andWidth w: Int) -> CAShapeLayer? {
-            let layer = CAShapeLayer()
-            layer.strokeColor = color?.cgColor
-            layer.fillColor = UIColor.clear.cgColor
-            layer.lineWidth = CGFloat(w)
-            layer.lineJoin = .round
-            layer.lineCap = .round
-            layer.path = path
-            layer.opacity = 1
-            return layer
-        }
-        
-        layer = createLayer(with: paths[index], color: self.color, andWidth: 1)!
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         paths.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = drawings.dequeueReusableCell(withReuseIdentifier: "RSDrawingsCell", for: indexPath)
-        let layer = cell.contentView.layer
-        let layer0 = createLayer(with: paths[indexPath.row])
-        var counter: CGFloat = 0;
-        if (switchState == true)
-        {
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                if (counter > 1)
-                {
-                    return
-                }
-                layer0?.strokeStart = 0
-                layer0?.strokeEnd = counter
-                
-                print(counter)
-                counter += 0.1
-            }
-        }
-        else
-        {
-            layer0?.strokeStart = 0
-            layer0?.strokeEnd = 1
-        }
-        layer.addSublayer(layer0!)
+        let cell: RSDrawingsCell = drawings.dequeueReusableCell(withReuseIdentifier: "RSDrawingsCell", for: indexPath) as! RSDrawingsCell
+        cell.state = switchState
+        cell.path = paths[indexPath.row]
+        cell.color = color
         return cell
     }
-    
-    func createLayer(with path: CGPath?) -> CAShapeLayer? {
-        let layer = CAShapeLayer()
-        layer.strokeColor = color.cgColor
-        layer.fillColor = UIColor.clear.cgColor
-        layer.lineWidth = 1
-        layer.lineJoin = .round
-        layer.lineCap = .round
-        layer.path = path
-        layer.opacity = 1
-        return layer
-    }
-    
+        
     func pass(_ theValue: UIColor) {
         color = theValue
     }
