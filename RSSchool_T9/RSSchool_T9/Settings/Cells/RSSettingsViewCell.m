@@ -148,12 +148,13 @@
 - (void)addSwitcher {
     self.switcher = [UISwitch new];
     [self.contentView addSubview:self.switcher];
+    self.switcher.on = YES;
+    self.state = YES;
     self.switcher.translatesAutoresizingMaskIntoConstraints = NO;
     [self.switcher.trailingAnchor constraintEqualToAnchor:self.trailingAnchor constant:-self.separatorInset.left].active = YES;
     [self.switcher.widthAnchor constraintEqualToConstant:self.frame.size.height].active = YES;
     [self.switcher.centerYAnchor constraintEqualToAnchor:self.centerYAnchor].active = YES;
     [self.switcher addTarget:self action:@selector(pickOnSwitcher:) forControlEvents:UIControlEventTouchUpInside];
-    
 }
 
 - (void)pickOnSwitcher:(UISwitch *)sender {

@@ -107,6 +107,12 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
     }
     
     @objc func tapOnButton() {
+        for cell in drawings.visibleCells
+        {
+            let i = cell as! RSDrawingsCell
+            i.timer?.invalidate()
+            i.timer = nil
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -231,10 +237,11 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
     func setDrawingsWithConstraints() {
         drawings = UICollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 300), collectionViewLayout: UICollectionViewFlowLayout())
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: drawings.frame.width / 2, height: drawings.frame.height / 3)
-        layout.sectionInset = UIEdgeInsets(top: 40, left: 50, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: dw.0 / 4, height: dw.0 / 4)
+        layout.minimumLineSpacing = dw.0 / 4
+        layout.sectionInset = UIEdgeInsets(top: dw.0 / 10, left: dw.0 / 8, bottom: 2, right: 0)
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 100
+        drawings.isPagingEnabled = true;
         drawings.collectionViewLayout = layout
         drawings.dataSource = self
         drawings.delegate = self
@@ -245,15 +252,12 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
         container.addSubview(drawings)
         drawings.translatesAutoresizingMaskIntoConstraints = false
         let margins = contentImageView!.layoutMarginsGuide
-        let aspectRatio: CGFloat = 3 / 4
-        let aspectRatioH: CGFloat = 3 / 8
         drawings.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
-        drawings.widthAnchor.constraint(equalTo: contentImageView!.heightAnchor,
-                                       multiplier: aspectRatio).isActive = true
-        drawings.heightAnchor.constraint(equalTo: contentImageView!.widthAnchor,
-                                       multiplier: aspectRatioH).isActive = true
+        drawings.widthAnchor.constraint(equalToConstant: contentImageView!.frame.width).isActive = true
+        drawings.heightAnchor.constraint(equalToConstant: (dw.0 / 4) + (dw.0 / 10) + 2).isActive = true
         drawings.topAnchor.constraint(equalTo: stroke.bottomAnchor, constant: 1).isActive = true
     }
+    
     
     func setTextForStoryWithConstraints() {
         contentTextLabel = RSCustomLabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -300,9 +304,10 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
         cell.state = switchState
         cell.path = paths[indexPath.row]
         cell.color = color
+        cell.isUserInteractionEnabled = false
         return cell
     }
-        
+    
     func pass(_ theValue: UIColor) {
         color = theValue
     }

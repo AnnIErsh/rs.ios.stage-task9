@@ -14,6 +14,7 @@ class RSDrawingsCell: UICollectionViewCell {
     public var state: Bool = false
     var color: UIColor!
     var path: CGPath!
+    var timer: Timer?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,32 +27,33 @@ class RSDrawingsCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         let layer = self.contentView.layer
-        if (layer.sublayers != nil)
-        {
-            layer.sublayers?.removeLast()
-        }
         let layer0 = createLayer(with: path)
         var counter: CGFloat = 0;
-        if (state == true)
+        if (state == true && timer == nil)
         {
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                if (counter > 1)
+            layer.sublayers?.removeAll()
+            timer = Timer.scheduledTimer(withTimeInterval: 1 / 60, repeats: true) { [self] _ in
+                if (counter >= 1)
                 {
+                    timer?.invalidate()
+                    timer = nil
+                    print("STOP")
                     return
                 }
                 layer0?.strokeStart = 0
                 layer0?.strokeEnd = counter
-                
-                print(counter)
-                counter += 0.1
+                //print(counter)
+                counter += 1 / 180
+                layer.addSublayer(layer0!)
             }
         }
         else
         {
+            layer.sublayers?.removeAll()
             layer0?.strokeStart = 0
             layer0?.strokeEnd = 1
+            layer.addSublayer(layer0!)
         }
-        layer.addSublayer(layer0!)
     }
     
     func createLayer(with path: CGPath?) -> CAShapeLayer? {
@@ -65,4 +67,16 @@ class RSDrawingsCell: UICollectionViewCell {
         layer.opacity = 1
         return layer
     }
+    
+//    func setConstrainrsToCell() {
+//        contentView.translatesAutoresizingMaskIntoConstraints = false
+//        contentView.accessibilityScroll(.left)
+//        contentView.accessibilityScroll(.right)
+//        NSLayoutConstraint.activate([
+//            contentView.leftAnchor.constraint(equalTo: leftAnchor),
+//            contentView.rightAnchor.constraint(equalTo: rightAnchor),
+//            contentView.topAnchor.constraint(equalTo: topAnchor),
+//            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+//        ])
+//    }
 }

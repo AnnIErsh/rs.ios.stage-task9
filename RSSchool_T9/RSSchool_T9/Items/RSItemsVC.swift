@@ -16,7 +16,7 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     var imagesForGallery: [[UIImage]] = []
     var paths: [[CGPath]] = []
     var colorToDraw = UIColor(red: 0.953, green: 0.686, blue: 0.133, alpha: 1)
-    var swithState = false
+    var swithState = true
     var dwidth: CGFloat {
         if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
         {
