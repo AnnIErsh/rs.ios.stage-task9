@@ -3,3 +3,4 @@
 //
 #import "RSSettingsNVC.h"
 #import "RSColorsVC.h"
+#import "RSStoryDelegate.h"

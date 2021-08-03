@@ -9,11 +9,13 @@
 
 import UIKit
 
-class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, RSStoryDelegate {
+    
     var itemCV: UICollectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: RSItemsLayout())
     var textForStory: Array<(String, Int)> = []
     var imagesForGallery: [[UIImage]] = []
     var paths: [[CGPath]] = []
+    var colorToDraw = UIColor(red: 0.953, green: 0.686, blue: 0.133, alpha: 1)
     var dwidth: CGFloat {
         if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
         {
@@ -97,6 +99,12 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         itemCV.setNeedsLayout()
+        let nvc = self.tabBarController?.viewControllers?.last as! UINavigationController
+        if nvc.visibleViewController is RSSettingsNVC
+        {
+            let vc = nvc.viewControllers.first as! RSSettingsNVC
+            vc.delegateSwift = self
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -126,6 +134,7 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             storyVC.contentTitleText = title?.text
             storyVC.contentText = textForStory[indexPath.row].0
             storyVC.paths = paths[indexPath.row]
+            storyVC.color = colorToDraw
             storyVC.modalPresentationStyle = .overFullScreen
             present(storyVC, animated: true, completion: nil)
         }
@@ -139,5 +148,9 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             galleryVC.modalPresentationStyle = .overFullScreen
             present(galleryVC, animated: true, completion: nil)
         }
+    }
+    
+    func pass(_ theValue: UIColor) {
+        colorToDraw = theValue
     }
 }

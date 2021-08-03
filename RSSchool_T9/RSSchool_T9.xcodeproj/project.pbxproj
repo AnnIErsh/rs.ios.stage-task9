@@ -89,6 +89,7 @@
 		E72DAA8026B8CEEA000DFBC1 /* UIColor+RSColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+RSColors.h"; sourceTree = "<group>"; };
 		E72DAA8126B8CEEA000DFBC1 /* UIColor+RSColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RSColors.m"; sourceTree = "<group>"; };
 		E72DAA8326B8DB0B000DFBC1 /* RSColorDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSColorDelegate.h; sourceTree = "<group>"; };
+		E72DAA8426B8FDB7000DFBC1 /* RSStoryDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSStoryDelegate.h; sourceTree = "<group>"; };
 		E741A24C26B0C70000A00A24 /* RSItemsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSItemsVC.swift; sourceTree = "<group>"; };
 		E741A25226B0E0E600A00A24 /* RSTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSTabBarVC.swift; sourceTree = "<group>"; };
 		E741A25526B18B0300A00A24 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
@@ -299,6 +300,7 @@
 			children = (
 				E7ADE66926B4649600481493 /* DelegateSizeProtocol.swift */,
 				E72DAA8326B8DB0B000DFBC1 /* RSColorDelegate.h */,
+				E72DAA8426B8FDB7000DFBC1 /* RSStoryDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

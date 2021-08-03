@@ -107,6 +107,7 @@
 - (void)passColor:(UIColor *)theValue andTheName:(nonnull NSString *)name {
     self.colorName = name;
     self.color = theValue;
+    [self.delegateSwift passColor:theValue];
 }
 
 - (void)passSelectedNumber:(NSNumber *)numb {

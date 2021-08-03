@@ -9,7 +9,7 @@
 
 import UIKit
 
-class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, RSStoryDelegate {
 
     var contentImageView: UIImageView?
     var contentImage: UIImage?
@@ -21,6 +21,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
     var stroke: UIView!
     var drawings: UICollectionView!
     var paths: [CGPath]!
+    var color: UIColor!
     var dw: (CGFloat, Int) {
         if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
         {
@@ -302,7 +303,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
             return layer
         }
         
-        layer = createLayer(with: paths[index], color: UIColor.white, andWidth: 1)!
+        layer = createLayer(with: paths[index], color: self.color, andWidth: 1)!
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -316,6 +317,10 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
         setPaths(layer: &layer0, index: indexPath.row)
         layer.addSublayer(layer0)
         return cell
+    }
+    
+    func pass(_ theValue: UIColor) {
+        color = theValue
     }
 }
 

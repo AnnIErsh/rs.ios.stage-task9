@@ -11,10 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol RSColorDelegate <NSObject>
-- (void)passColor:(UIColor *)theValue andTheName:(NSString *)name;
-@optional
-- (void)passSelectedNumber:(NSNumber *)numb;
+@protocol RSStoryDelegate <NSObject>
+- (void)passColor:(UIColor*)theValue;
 @end
 
 NS_ASSUME_NONNULL_END
