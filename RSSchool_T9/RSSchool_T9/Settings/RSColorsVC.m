@@ -66,6 +66,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     self.selectedSell = indexPath.row;
+    UIColor *colorToPass = [UIColor putColor:@(self.selectedSell)];
+    NSString *str = [UIColor putName:@(self.selectedSell)];
+    [self.delegate passColor:colorToPass andTheName:str];
+    [self.delegate passSelectedNumber:@(self.selectedSell)];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

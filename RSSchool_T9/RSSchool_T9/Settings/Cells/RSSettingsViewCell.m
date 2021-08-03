@@ -129,12 +129,12 @@
 
 - (void)addStrokeColor {
     self.colorSubLabel = [UILabel new];
-    self.colorSubLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+    self.colorSubLabel.textColor = self.color;
     self.colorSubLabel.font = [UIFont fontWithName:@"SFProDisplay-Regular" size:12];
     NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
     paragraphStyle.lineHeightMultiple = 1.12;
     self.colorSubLabel.textAlignment = NSTextAlignmentCenter;
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"#e87aa4" attributes: @{ NSParagraphStyleAttributeName:paragraphStyle}];
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:self.str attributes: @{ NSParagraphStyleAttributeName:paragraphStyle}];
     self.colorSubLabel.attributedText = string;
     [self.strokeLabel addSubview:self.colorSubLabel];
     self.colorSubLabel.translatesAutoresizingMaskIntoConstraints = NO;

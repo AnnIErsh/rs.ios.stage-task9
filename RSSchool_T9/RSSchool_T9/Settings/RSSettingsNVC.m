@@ -15,6 +15,9 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) RSColorsVC *vc;
+@property (nonatomic, strong) NSString *colorName;
+@property (nonatomic, strong) UIColor *color;
+@property (nonatomic) NSInteger selectedSell;
 
 @end
 
@@ -33,6 +36,9 @@
     [self.view addSubview:self.tableView];
     [self makeTitleItem];
     [self addConstraintsToTableView];
+    self.colorName =  @"#f3af22";
+    self.selectedSell = 6;
+    self.color = [UIColor colorWithRed:0.953 green:0.686 blue:0.133 alpha:1];
 }
 
 - (void)addConstraintsToTableView {
@@ -65,6 +71,8 @@
         cell = [[RSSettingsViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"RSSettingsViewCell"];
     }
     cell.numb = indexPath.row;
+    cell.str = self.colorName;
+    cell.color = self.color;
     cell.selectedBackgroundView.backgroundColor = self.tableView.backgroundColor;
     cell.backgroundColor = self.tableView.backgroundColor;
     cell.inputView.backgroundColor = self.tableView.backgroundColor;
@@ -86,6 +94,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 1)
     {
+        self.vc.delegate = self;
         [self.navigationController pushViewController:self.vc animated:YES];
     }
 }
@@ -93,6 +102,25 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     return 51;
+}
+
+- (void)passColor:(UIColor *)theValue andTheName:(nonnull NSString *)name {
+    self.colorName = name;
+    self.color = theValue;
+}
+
+- (void)passSelectedNumber:(NSNumber *)numb {
+    self.selectedSell = numb.intValue;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:1 inSection:0];
+    RSSettingsViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+    cell.str = self.colorName;
+    cell.color = self.color;
+    cell.colorSubLabel.text = self.colorName;
+    cell.colorSubLabel.textColor = self.color;
 }
 
 @end

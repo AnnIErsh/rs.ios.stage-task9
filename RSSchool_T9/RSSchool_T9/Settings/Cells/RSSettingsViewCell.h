@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel *strokeLabel;
 @property (nonatomic, strong) UILabel *colorSubLabel;
 @property (nonatomic, strong) UISwitch *switcher;
+@property (nonatomic, strong) NSString *str;
+@property (nonatomic, strong) UIColor *color;
 @end
 
 NS_ASSUME_NONNULL_END

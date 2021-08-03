@@ -7,13 +7,13 @@
 // 
 // Copyright © 2021 RSSchool. All rights reserved.
 
-#import <UIKit/UIKit.h>
-#import "RSColorDelegate.h"
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RSColorsVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
-@property (weak) id <RSColorDelegate> delegate;
+@protocol RSColorDelegate <NSObject>
+- (void)passColor:(UIColor *)theValue andTheName:(NSString *)name;
+- (void)passSelectedNumber:(NSNumber *)numb;
 @end
 
 NS_ASSUME_NONNULL_END
