@@ -63,16 +63,4 @@ class RSDrawingsCell: UICollectionViewCell {
         super.reloadInputViews()
         self.layoutSubviews()
     }
-    
-//    func setConstrainrsToCell() {
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.accessibilityScroll(.left)
-//        contentView.accessibilityScroll(.right)
-//        NSLayoutConstraint.activate([
-//            contentView.leftAnchor.constraint(equalTo: leftAnchor),
-//            contentView.rightAnchor.constraint(equalTo: rightAnchor),
-//            contentView.topAnchor.constraint(equalTo: topAnchor),
-//            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
-//        ])
-//    }
 }

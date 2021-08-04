@@ -109,12 +109,6 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
     }
     
     @objc func tapOnButton() {
-//        for cell in drawings.visibleCells
-//        {
-//            let i = cell as! RSDrawingsCell
-//            i.timer?.invalidate()
-//            i.timer = nil
-//        }
         self.dismiss(animated: true, completion: nil)
     }
     
