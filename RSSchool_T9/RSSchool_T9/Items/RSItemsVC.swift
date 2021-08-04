@@ -39,7 +39,7 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -160,12 +160,12 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         if (switcher == true)
         {
             swithState = true
-            print("SWIFT ON")
+            print("switcher ON")
         }
         else
         {
             swithState = false
-            print("SWIFT OFF")
+            print("switcher OFF")
         }
     }
 
