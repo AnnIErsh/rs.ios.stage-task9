@@ -38,7 +38,7 @@
     }
     if (self.numb == 12)
     {
-        UIBezierPath *path0 = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(16, 16)];
+        UIBezierPath *path0 = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(16, 16)];
         CAShapeLayer *layer0 = [CAShapeLayer new];
         layer0.path = path0.CGPath;
         self.layer.mask = layer0;
