@@ -14,7 +14,6 @@ class RSDrawingsCell: UICollectionViewCell {
     public var state: Bool = false
     var color: UIColor!
     var path: CGPath!
-    var timer: Timer?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,26 +25,17 @@ class RSDrawingsCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let layer = self.contentView.layer
+        let layer = self.layer
         let layer0 = createLayer(with: path)
-        var counter: CGFloat = 0;
-        if (state == true && timer == nil)
+        if (state == true)
         {
             layer.sublayers?.removeAll()
-            timer = Timer.scheduledTimer(withTimeInterval: 1 / 60, repeats: true) { [self] _ in
-                if (counter >= 1)
-                {
-                    timer?.invalidate()
-                    timer = nil
-                    print("STOP")
-                    return
-                }
-                layer0?.strokeStart = 0
-                layer0?.strokeEnd = counter
-                //print(counter)
-                counter += 1 / 180
-                layer.addSublayer(layer0!)
-            }
+            layer.addSublayer(layer0!)
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            animation.fromValue = 0
+            animation.duration = 3
+            layer0?.add(animation, forKey: "MyAnimation")
+            
         }
         else
         {
@@ -66,6 +56,12 @@ class RSDrawingsCell: UICollectionViewCell {
         layer.path = path
         layer.opacity = 1
         return layer
+    }
+    
+    
+    override func reloadInputViews() {
+        super.reloadInputViews()
+        self.layoutSubviews()
     }
     
 //    func setConstrainrsToCell() {

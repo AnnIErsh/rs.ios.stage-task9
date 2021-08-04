@@ -12,6 +12,7 @@ import UIKit
 class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, RSStoryDelegate {
 
     var contentImageView: UIImageView?
+    var shapeLayer: CALayer?
     var layerToDraw: CALayer?
     var contentImage: UIImage?
     var contentText: String?
@@ -24,6 +25,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
     var paths: [CGPath]!
     var color: UIColor!
     var switchState = false
+    var timer: Timer?
     var dw: (CGFloat, Int) {
         if (UIScreen.main.bounds.width > UIScreen.main.bounds.height)
         {
@@ -107,12 +109,12 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
     }
     
     @objc func tapOnButton() {
-        for cell in drawings.visibleCells
-        {
-            let i = cell as! RSDrawingsCell
-            i.timer?.invalidate()
-            i.timer = nil
-        }
+//        for cell in drawings.visibleCells
+//        {
+//            let i = cell as! RSDrawingsCell
+//            i.timer?.invalidate()
+//            i.timer = nil
+//        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -239,7 +241,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: dw.0 / 4, height: dw.0 / 4)
         layout.minimumLineSpacing = dw.0 / 4
-        layout.sectionInset = UIEdgeInsets(top: dw.0 / 10, left: dw.0 / 8, bottom: 2, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: dw.0 / 10, left: dw.0 / 8, bottom: 2, right: 2)
         layout.scrollDirection = .horizontal
         drawings.isPagingEnabled = true;
         drawings.collectionViewLayout = layout
@@ -254,7 +256,7 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
         let margins = contentImageView!.layoutMarginsGuide
         drawings.centerXAnchor.constraint(equalTo: margins.centerXAnchor).isActive = true
         drawings.widthAnchor.constraint(equalToConstant: contentImageView!.frame.width).isActive = true
-        drawings.heightAnchor.constraint(equalToConstant: (dw.0 / 4) + (dw.0 / 10) + 2).isActive = true
+        drawings.heightAnchor.constraint(equalToConstant: (dw.0 / 4) + (dw.0 / 10) + 4).isActive = true
         drawings.topAnchor.constraint(equalTo: stroke.bottomAnchor, constant: 1).isActive = true
     }
     
@@ -305,11 +307,34 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
         cell.path = paths[indexPath.row]
         cell.color = color
         cell.isUserInteractionEnabled = false
+        drawings.bounces = true
         return cell
     }
     
     func pass(_ theValue: UIColor) {
         color = theValue
     }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        if(drawings.panGestureRecognizer.translation(in: scrollView.superview).x > 0)
+        {
+            if (scroll.panGestureRecognizer.translation(in: scrollView.superview).y.isZero == true)
+            {
+                let path = IndexPath(row: 0, section: 0)
+                let cell = drawings.cellForItem(at: path) as? RSDrawingsCell
+                cell?.reloadInputViews()
+                print("rigth")
+            }
+        }
+        if (drawings.panGestureRecognizer.translation(in: scrollView.superview).x < 0)
+        {
+            if (scroll.panGestureRecognizer.translation(in: scrollView.superview).y.isZero == true)
+            {
+                let path = IndexPath(row: 2, section: 0)
+                let cell = drawings.cellForItem(at: path) as? RSDrawingsCell
+                cell?.reloadInputViews()
+                print("left")
+            }
+        }
+    }
 }
-
