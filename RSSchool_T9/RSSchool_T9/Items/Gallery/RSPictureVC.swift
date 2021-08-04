@@ -54,12 +54,14 @@ class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDe
         scroll.addGestureRecognizer(tap!)
         scroll.delegate = self
         scroll.maximumZoomScale = 3.0
+        scroll.minimumZoomScale = 1.0
         scroll.isUserInteractionEnabled = true
         scroll.canCancelContentTouches = false
         tap!.numberOfTapsRequired = 1
         scroll.isPagingEnabled = false
 //        scroll.bouncesZoom = false
 //        scroll.bounces = false
+        
     }
     
     @objc func tapOnPicture() {
@@ -111,7 +113,6 @@ class RSPictureVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDe
         img.topAnchor.constraint(equalTo: scroll.topAnchor, constant: 0).isActive = true
         img.centerXAnchor.constraint(equalTo: scroll.centerXAnchor).isActive = true
         img.centerYAnchor.constraint(equalTo: scroll.centerYAnchor).isActive = true
-
     }
     
     func makeCloseButton() {
