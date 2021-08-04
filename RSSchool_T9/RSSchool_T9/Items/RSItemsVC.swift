@@ -160,12 +160,10 @@ class RSItemsVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         if (switcher == true)
         {
             swithState = true
-            print("switcher ON")
         }
         else
         {
             swithState = false
-            print("switcher OFF")
         }
     }
 }

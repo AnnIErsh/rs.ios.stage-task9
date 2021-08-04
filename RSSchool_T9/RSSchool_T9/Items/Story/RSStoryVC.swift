@@ -317,7 +317,6 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
                 let path = IndexPath(row: 0, section: 0)
                 let cell = drawings.cellForItem(at: path) as? RSDrawingsCell
                 cell?.reloadInputViews()
-                print("rigth")
             }
         }
         if (drawings.panGestureRecognizer.translation(in: scrollView.superview).x < 0)
@@ -327,7 +326,6 @@ class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegat
                 let path = IndexPath(row: 2, section: 0)
                 let cell = drawings.cellForItem(at: path) as? RSDrawingsCell
                 cell?.reloadInputViews()
-                print("left")
             }
         }
     }

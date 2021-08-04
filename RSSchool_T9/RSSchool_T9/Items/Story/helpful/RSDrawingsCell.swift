@@ -35,7 +35,6 @@ class RSDrawingsCell: UICollectionViewCell {
             animation.fromValue = 0
             animation.duration = 3
             layer0?.add(animation, forKey: "MyAnimation")
-            
         }
         else
         {

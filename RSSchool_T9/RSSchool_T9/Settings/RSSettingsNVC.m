@@ -27,7 +27,6 @@
     [super viewDidLoad];
     self.vc = [[RSColorsVC alloc] init];
     self.navigationController.navigationBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 88);
-    self.navigationItem.backBarButtonItem.tintColor = UIColor.redColor;
     self.title = @"Settings";
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(10, 10, 100, 100) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;

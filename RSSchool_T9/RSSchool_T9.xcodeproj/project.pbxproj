@@ -283,6 +283,13 @@
 			path = "story-6";
 			sourceTree = "<group>";
 		};
+		E729E71526BAB92200FAF63B /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		E72DAA7F26B8CEB2000DFBC1 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +302,7 @@
 		E741A25026B0C78D00A00A24 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E729E71526BAB92200FAF63B /* Category */,
 				E72DAA7F26B8CEB2000DFBC1 /* Colors */,
 				E720965126B7794200DCDBA9 /* Cells */,
 				E720964926B75EFD00DCDBA9 /* RSSettingsNVC.m */,
