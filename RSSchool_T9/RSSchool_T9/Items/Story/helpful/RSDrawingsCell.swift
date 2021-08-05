@@ -14,6 +14,7 @@ class RSDrawingsCell: UICollectionViewCell {
     public var state: Bool = false
     var color: UIColor!
     var path: CGPath!
+    var layer0: CAShapeLayer?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,12 +26,13 @@ class RSDrawingsCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let layer = self.layer
-        let layer0 = createLayer(with: path)
+        if (layer0 == nil)
+        {
+            layer0 = createLayer(with: path)
+            layer.addSublayer(layer0!)
+        }
         if (state == true)
         {
-            layer.sublayers?.removeAll()
-            layer.addSublayer(layer0!)
             let animation = CABasicAnimation(keyPath: "strokeEnd")
             animation.fromValue = 0
             animation.duration = 3
@@ -38,10 +40,8 @@ class RSDrawingsCell: UICollectionViewCell {
         }
         else
         {
-            layer.sublayers?.removeAll()
             layer0?.strokeStart = 0
             layer0?.strokeEnd = 1
-            layer.addSublayer(layer0!)
         }
     }
     
@@ -56,7 +56,6 @@ class RSDrawingsCell: UICollectionViewCell {
         layer.opacity = 1
         return layer
     }
-    
     
     override func reloadInputViews() {
         super.reloadInputViews()
