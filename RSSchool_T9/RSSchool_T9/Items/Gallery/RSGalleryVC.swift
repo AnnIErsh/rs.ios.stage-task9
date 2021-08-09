@@ -9,7 +9,7 @@
 
 import UIKit
 
-class RSGalleryVC: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
+class RSGalleryVC: RSOwnClassVC, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
     var scroll: RSScrollView!
     var tap: UITapGestureRecognizer?

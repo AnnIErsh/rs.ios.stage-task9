@@ -29,6 +29,7 @@
 		E720964A26B75EFD00DCDBA9 /* RSSettingsNVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E720964926B75EFD00DCDBA9 /* RSSettingsNVC.m */; };
 		E720965026B7747800DCDBA9 /* SFProDisplay-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E720964F26B7747800DCDBA9 /* SFProDisplay-Semibold.ttf */; };
 		E720965426B7799600DCDBA9 /* RSSettingsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E720965326B7799600DCDBA9 /* RSSettingsViewCell.m */; };
+		E7262A4226C134D4000BC599 /* RSOwnClassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7262A4126C134D4000BC599 /* RSOwnClassVC.swift */; };
 		E726A13E26B5701500A34F32 /* RSGalleryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E726A13D26B5701500A34F32 /* RSGalleryVC.swift */; };
 		E726A14026B5B25C00A34F32 /* RSPictureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E726A13F26B5B25C00A34F32 /* RSPictureVC.swift */; };
 		E726A14526B5E2AB00A34F32 /* RSScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E726A14426B5E2AB00A34F32 /* RSScrollView.swift */; };
@@ -82,6 +83,7 @@
 		E720964F26B7747800DCDBA9 /* SFProDisplay-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Semibold.ttf"; sourceTree = "<group>"; };
 		E720965226B7799600DCDBA9 /* RSSettingsViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSettingsViewCell.h; sourceTree = "<group>"; };
 		E720965326B7799600DCDBA9 /* RSSettingsViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSettingsViewCell.m; sourceTree = "<group>"; };
+		E7262A4126C134D4000BC599 /* RSOwnClassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOwnClassVC.swift; sourceTree = "<group>"; };
 		E726A13D26B5701500A34F32 /* RSGalleryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSGalleryVC.swift; sourceTree = "<group>"; };
 		E726A13F26B5B25C00A34F32 /* RSPictureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSPictureVC.swift; sourceTree = "<group>"; };
 		E726A14426B5E2AB00A34F32 /* RSScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSScrollView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 		2BB9E74F26AB605700112651 = {
 			isa = PBXGroup;
 			children = (
+				E7262A4126C134D4000BC599 /* RSOwnClassVC.swift */,
 				2BB9E75A26AB605700112651 /* RSSchool_T9 */,
 				2BB9E75926AB605700112651 /* Products */,
 			);
@@ -477,6 +480,7 @@
 				2BB9F2EC26AF1F6200F43852 /* story-1-path.swift in Sources */,
 				E72DAA7726B8AD73000DFBC1 /* RSColorsVC.m in Sources */,
 				E729E70E26BA64A900FAF63B /* story-5-path.swift in Sources */,
+				E7262A4226C134D4000BC599 /* RSOwnClassVC.swift in Sources */,
 				E741A25A26B1999300A00A24 /* RSItemsCell.swift in Sources */,
 				E726A13E26B5701500A34F32 /* RSGalleryVC.swift in Sources */,
 				E720965426B7799600DCDBA9 /* RSSettingsViewCell.m in Sources */,

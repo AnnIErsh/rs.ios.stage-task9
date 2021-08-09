@@ -9,7 +9,7 @@
 
 import UIKit
 
-class RSStoryVC: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, RSStoryDelegate {
+class RSStoryVC: RSOwnClassVC, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, RSStoryDelegate {
 
     var contentImageView: UIImageView?
     var shapeLayer: CALayer?
